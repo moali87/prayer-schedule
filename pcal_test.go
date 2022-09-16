@@ -16,7 +16,6 @@ func TestPrayerCalendarWithAPIKey(t *testing.T) {
 	}
 	beverlyHillsTime := time.Date(2022, time.October, 22, 10, 10, 0, 0, beverlyHillsTimeZone)
   customerInputWithAPIKey := &CustomerLocationInput{
-		City:        "Beverly Hills",
 		CountryCode: "USA",
 		HEREAPIKey:  os.Getenv("HERE_API_KEY"),
 		PostalCode:  "90210",
@@ -24,7 +23,6 @@ func TestPrayerCalendarWithAPIKey(t *testing.T) {
   }
 
   hereInput := new(CustomerLocationInputWithHEREAPIKey)
-  hereInput.City = customerInputWithAPIKey.City
   hereInput.CountryCode = customerInputWithAPIKey.CountryCode
   hereInput.PostalCode = customerInputWithAPIKey.PostalCode
   hereInput.HEREAPIKey = customerInputWithAPIKey.HEREAPIKey
@@ -62,13 +60,10 @@ func TestPrayerCalendarWithoutAPIKey(t *testing.T) {
 	beverlyHillsTime := time.Date(2022, time.October, 22, 10, 10, 0, 0, beverlyHillsTimeZone)
   
   customerInputWithAPIKey := &CustomerLocationInput{
-		City:        "Beverly Hills",
-		CountryCode: "USA",
     Coordinates: PrayerCalendarInputCoordinates{
       Latitude: 34.1030,
       Longitude: -118.4105,
     },
-		PostalCode:  "90210",
     CustTime:  beverlyHillsTime,
   }
 

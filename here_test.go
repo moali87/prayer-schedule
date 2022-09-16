@@ -7,7 +7,6 @@ import (
 
 func TestHEREAPI(t *testing.T) {
 	customerLocationInput := &CustomerLocationInputWithHEREAPIKey{
-		City:        "Beverly Hills",
 		CountryCode: "USA",
 		HEREAPIKey:  os.Getenv("HERE_API_KEY"),
 		PostalCode:  "90210",
@@ -26,11 +25,7 @@ func TestHEREAPI(t *testing.T) {
 		t.Error("Error: Failed to match postal code to HERE address output")
 	}
 
-	if len(custLocRet.Response.View) < 1 {
-		t.Errorf("Customer lookup returned with no locations %v", custLocRet.Response.View)
-	}
-
-	if len(custLocRet.Response.View[0].Result) < 1 {
-		t.Errorf("Customer lookup result is empty %v", custLocRet.Response.View[0].Result)
+	if len(custLocRet.Items) < 1 {
+		t.Errorf("Customer lookup returned with no locations %v", custLocRet.Items)
 	}
 }

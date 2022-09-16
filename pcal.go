@@ -10,7 +10,6 @@ import (
 )
 
 type CustomerLocationInput struct {
-	City        string
 	Coordinates PrayerCalendarInputCoordinates // Only required if HEREAPIKey is not filled
 	CountryCode string
 	CustTime    time.Time
@@ -32,9 +31,6 @@ func NewPrayerCalendarWithCoordinates(
 	latitude float32,
 	longitude float32) (*CustomerLocationInput, error) {
 	return &CustomerLocationInput{
-		City:        city,
-		CountryCode: countryCode,
-		PostalCode:  postalCode,
 		Coordinates: PrayerCalendarInputCoordinates{
 			Latitude:  latitude,
 			Longitude: longitude,
@@ -50,7 +46,6 @@ func NewPrayerCalendarWithoutCoordiantes(
 	hereAPIKey string,
 ) (*CustomerLocationInput, error) {
 	return &CustomerLocationInput{
-		City:        city,
 		CountryCode: countryCode,
 		PostalCode:  postalCode,
 		HEREAPIKey:  hereAPIKey,
@@ -72,7 +67,6 @@ func PrayerCalendar(customerInput *CustomerLocationInput) (*PCalOutput, error) {
 
 	monthlyPrayerData.CustTime = customerInput.CustTime
 	monthlyPrayerData.Institution = customerInput.Institution
-	hereLookup.City = customerInput.City
 	hereLookup.CountryCode = customerInput.CountryCode
 
   if lookupMethod != "Coordinates" && lookupMethod != "APIKey" {
@@ -86,22 +80,22 @@ func PrayerCalendar(customerInput *CustomerLocationInput) (*PCalOutput, error) {
 	}
 	// Build for condition without coordiantes.  To be used with HERE API
 	if lookupMethod == "APIKey" {
+    hereLookup.PostalCode = customerInput.PostalCode
 		hereLookup.HEREAPIKey = customerInput.HEREAPIKey
     hereResp, hereCity, err := HERECustomerLocation(hereLookup)
     if err != nil {
-      log.Fatalf("unable to lookup customer location: %v", hereLookup)
+      log.Fatalf("unable to lookup customer location using API Key: %v", hereLookup)
     }
 
     if hereCity.Coordiantes.Lat == 0 && hereCity.Coordiantes.Lng == 0 {
-      hereRespResults := hereResp.Response.View[0].Result
-      for i := 0; i < len(hereRespResults); i++ {
-        if hereRespResults[i].Location.Address.PostalCode == customerInput.PostalCode {
-          monthlyPrayerData.Longitude = hereRespResults[i].Location.DisplayPosition.Lng
-          monthlyPrayerData.Latitude = hereRespResults[i].Location.DisplayPosition.Lat
+      for i := 0; i < len(hereResp.Items); i++ {
+        if hereResp.Items[i].Address.PostalCode == customerInput.PostalCode {
+          monthlyPrayerData.Longitude = hereResp.Items[i].Position.Lng
+          monthlyPrayerData.Latitude = hereResp.Items[i].Position.Lat
           return AladhanData(monthlyPrayerData)
         }
       }
-      log.Fatalf("unable to pinpoint customer location based on zip code: %v:", hereRespResults)
+      log.Fatalf("unable to pinpoint customer location based on zip code: %v:", hereResp)
     }
     monthlyPrayerData.Longitude = hereCity.Coordiantes.Lng
     monthlyPrayerData.Latitude = hereCity.Coordiantes.Lat

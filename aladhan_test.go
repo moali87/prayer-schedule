@@ -39,7 +39,6 @@ func TestAladhanData(t *testing.T) {
 func TestHEREAladhan(t *testing.T) {
 	customerLocationInput := &CustomerLocationInputWithHEREAPIKey{
 		HEREAPIKey:  os.Getenv("HERE_API_KEY"),
-		City:        "Beverly Hills",
 		CountryCode: "USA",
 		PostalCode:  "90210",
 	}
@@ -56,8 +55,8 @@ func TestHEREAladhan(t *testing.T) {
 	}
 	beverlyHillsTime := time.Date(2022, time.October, 22, 10, 10, 0, 0, beverlyHillsTimeZone)
 	custPcalInput := &PCalInput{}
-	custPcalInput.Latitude = float32(custLocRet.Response.View[0].Result[0].Location.DisplayPosition.Lat)
-	custPcalInput.Longitude = float32(custLocRet.Response.View[0].Result[0].Location.DisplayPosition.Lng)
+  custPcalInput.Latitude = float32(custLocRet.Items[0].Position.Lat)
+	custPcalInput.Longitude = float32(custLocRet.Items[0].Position.Lng)
 	custPcalInput.Institution = 1
 	custPcalInput.CustTime = beverlyHillsTime
 
