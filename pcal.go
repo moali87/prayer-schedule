@@ -24,31 +24,34 @@ type PrayerCalendarInputCoordinates struct {
 }
 
 func NewPrayerCalendarWithCoordinates(
-	city string,
 	countryCode string,
 	customerTime time.Time,
-	postalCode string,
+  institution int,
 	latitude float32,
-	longitude float32) (*CustomerLocationInput, error) {
+	longitude float32,
+	postalCode string) (*CustomerLocationInput, error) {
 	return &CustomerLocationInput{
 		Coordinates: PrayerCalendarInputCoordinates{
 			Latitude:  latitude,
 			Longitude: longitude,
 		},
+    CustTime: customerTime,
+    Institution: institution,
 	}, nil
 }
 
 func NewPrayerCalendarWithoutCoordiantes(
-	city string,
 	countryCode string,
 	customerTime time.Time,
-	postalCode string,
+  institution int,
 	hereAPIKey string,
-) (*CustomerLocationInput, error) {
+	postalCode string) (*CustomerLocationInput, error) {
 	return &CustomerLocationInput{
 		CountryCode: countryCode,
-		PostalCode:  postalCode,
+    CustTime: customerTime,
 		HEREAPIKey:  hereAPIKey,
+    Institution: institution,
+		PostalCode:  postalCode,
 	}, nil
 }
 
