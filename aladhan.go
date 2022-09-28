@@ -11,6 +11,7 @@ import (
 // FiveDailyPrayers is all of the five prayers for the day in index +-1 as well as the time of prayer
 type FiveDailyPrayers struct {
 	Fajr    string `json:"Fajr"`
+  Sunrise string `json:"Sunrise"`
 	Dhuhr   string `json:"Dhuhr"`
 	Asr     string `json:"Asr"`
 	Maghrib string `json:"Maghrib"`
