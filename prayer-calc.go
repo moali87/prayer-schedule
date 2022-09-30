@@ -44,12 +44,12 @@ func determineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) bool 
 
 // DeterminedPrayerOutput is the structure which contains current and next prayer name and their time difference
 type DeterminedPrayerOutput struct {
-  currentPrayerName string
-  nextPrayerName string
-  previousDayIsha bool
-  currentPrayerTime string
-  nextPrayerTime string
-  timeDiff time.Duration
+  CurrentPrayerName string
+  NextPrayerName string
+  PreviousDayIsha bool
+  CurrentPrayerTime string
+  NextPrayerTime string
+  TimeDiff time.Duration
 }
 
 // DetermineWhichPrayer returns the current and next prayer.  It will also state if the current prayer is at the previous day
@@ -62,9 +62,9 @@ func DetermineWhichPrayer(
     output := &DeterminedPrayerOutput{}
     // Determine if current prayer is Isha for the current day
     if determineSelectedPrayer(*clientTimeNow, currentDayPrayers.Isha) {
-      output.currentPrayerName = "Isha"
-      output.nextPrayerName = "Fajr"
-      output.previousDayIsha = false
+      output.CurrentPrayerName = "Isha"
+      output.NextPrayerName = "Fajr"
+      output.PreviousDayIsha = false
       return output, nil
     }
 
@@ -98,77 +98,77 @@ func DetermineWhichPrayer(
       nextPrayerName := prayerMapKeys[key]
       selectedPrayerDetermined := determineSelectedPrayer(*clientTimeNow, currentDayPrayersMap[nextPrayerName])
       if nextPrayerName == "Fajr" && !selectedPrayerDetermined {
-        output.currentPrayerName = "Isha"
-        output.currentPrayerTime = currentDayPrayersMap[output.currentPrayerName]
-        output.previousDayIsha = true
-        output.nextPrayerName = "Fajr"
-        output.nextPrayerTime = nextDayPrayersMap[output.nextPrayerName]
+        output.CurrentPrayerName = "Isha"
+        output.CurrentPrayerTime = currentDayPrayersMap[output.CurrentPrayerName]
+        output.PreviousDayIsha = true
+        output.NextPrayerName = "Fajr"
+        output.NextPrayerTime = nextDayPrayersMap[output.NextPrayerName]
         break
       }
 
       if nextPrayerName == "Sunrise" && !selectedPrayerDetermined {
-        output.currentPrayerName = "Fajr"
-        output.currentPrayerTime = currentDayPrayersMap[output.currentPrayerName]
-        output.nextPrayerName = "Dhuhr"
-        output.previousDayIsha = false
-        output.nextPrayerTime = nextDayPrayersMap[output.nextPrayerName]
+        output.CurrentPrayerName = "Fajr"
+        output.CurrentPrayerTime = currentDayPrayersMap[output.CurrentPrayerName]
+        output.NextPrayerName = "Dhuhr"
+        output.PreviousDayIsha = false
+        output.NextPrayerTime = nextDayPrayersMap[output.NextPrayerName]
         break
       }
 
       if nextPrayerName == "Dhuhr" && !selectedPrayerDetermined {
-        output.currentPrayerName = "Sunrise"
-        output.currentPrayerTime = currentDayPrayersMap[output.currentPrayerName]
-        output.nextPrayerName = nextPrayerName
-        output.previousDayIsha = false
-        output.nextPrayerTime = nextDayPrayersMap[output.nextPrayerName]
+        output.CurrentPrayerName = "Sunrise"
+        output.CurrentPrayerTime = currentDayPrayersMap[output.CurrentPrayerName]
+        output.NextPrayerName = nextPrayerName
+        output.PreviousDayIsha = false
+        output.NextPrayerTime = nextDayPrayersMap[output.NextPrayerName]
         break
       }
 
       if nextPrayerName == "Asr" && !selectedPrayerDetermined {
-        output.currentPrayerName = "Dhuhr"
-        output.currentPrayerTime = currentDayPrayersMap[output.currentPrayerName]
-        output.nextPrayerName = nextPrayerName
-        output.previousDayIsha = false
-        output.nextPrayerTime = nextDayPrayersMap[output.nextPrayerName]
+        output.CurrentPrayerName = "Dhuhr"
+        output.CurrentPrayerTime = currentDayPrayersMap[output.CurrentPrayerName]
+        output.NextPrayerName = nextPrayerName
+        output.PreviousDayIsha = false
+        output.NextPrayerTime = nextDayPrayersMap[output.NextPrayerName]
         break
       }
 
       if nextPrayerName == "Maghrib" && !selectedPrayerDetermined {
-        output.currentPrayerName = "Asr"
-        output.currentPrayerTime = currentDayPrayersMap[output.currentPrayerName]
-        output.nextPrayerName = nextPrayerName
-        output.previousDayIsha = false
-        output.nextPrayerTime = nextDayPrayersMap[output.nextPrayerName]
+        output.CurrentPrayerName = "Asr"
+        output.CurrentPrayerTime = currentDayPrayersMap[output.CurrentPrayerName]
+        output.NextPrayerName = nextPrayerName
+        output.PreviousDayIsha = false
+        output.NextPrayerTime = nextDayPrayersMap[output.NextPrayerName]
         break
       }
 
       if nextPrayerName == "Isha" && !selectedPrayerDetermined {
-        output.currentPrayerName = "Maghrib"
-        output.currentPrayerTime = currentDayPrayersMap[output.currentPrayerName]
-        output.nextPrayerName = nextPrayerName
-        output.previousDayIsha = false
-        output.nextPrayerTime = nextDayPrayersMap[output.nextPrayerName]
+        output.CurrentPrayerName = "Maghrib"
+        output.CurrentPrayerTime = currentDayPrayersMap[output.CurrentPrayerName]
+        output.NextPrayerName = nextPrayerName
+        output.PreviousDayIsha = false
+        output.NextPrayerTime = nextDayPrayersMap[output.NextPrayerName]
         break
       }
 
       // Break on the first false.  If prayer is Asr and Asr selected prayer returns false.  Set current prayer name to Asr and next prayer to Asr + 1
       if !selectedPrayerDetermined {
-        output.currentPrayerName = nextPrayerName
-        output.currentPrayerTime = currentDayPrayersMap[output.currentPrayerName]
-        output.nextPrayerName = prayerMapKeys[key + 1]
-        output.nextPrayerTime = nextDayPrayersMap[output.nextPrayerName]
+        output.CurrentPrayerName = nextPrayerName
+        output.CurrentPrayerTime = currentDayPrayersMap[output.CurrentPrayerName]
+        output.NextPrayerName = prayerMapKeys[key + 1]
+        output.NextPrayerTime = nextDayPrayersMap[output.NextPrayerName]
         break
       }
     }
 
-    nextPrayerSplit := strings.Split(output.nextPrayerTime, ":")
+    nextPrayerSplit := strings.Split(output.NextPrayerTime, ":")
     nextPrayerHour := nextPrayerSplit[0]
     nextPrayerMinute := nextPrayerSplit[1]
     timediff, err := timeDiff(clientTimeNow, nextPrayerHour, nextPrayerMinute)
     if err != nil {
       return nil, fmt.Errorf("unable to gather time difference")
     }
-    output.timeDiff = *timediff
+    output.TimeDiff = *timediff
 
     fmt.Println(output)
     if output != nil {

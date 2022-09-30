@@ -122,16 +122,16 @@ func TestDetermineWhichPrayerIsha(t *testing.T) {
   }
 
   //// Test if current prayer name is Isha
-  if prevDayIshaStruct.currentPrayerName != "Isha" {
-    t.Errorf("incorrect prayer name output.  Prayer name is not \"Isha\", current prayer name is %s", prevDayIshaStruct.currentPrayerName)
+  if prevDayIshaStruct.CurrentPrayerName != "Isha" {
+    t.Errorf("incorrect prayer name output.  Prayer name is not \"Isha\", current prayer name is %s", prevDayIshaStruct.CurrentPrayerName)
   }
   //// Test if previous day Isha is true
-  if !prevDayIshaStruct.previousDayIsha {
+  if !prevDayIshaStruct.PreviousDayIsha {
     t.Error("previous day Isha is not true when it should be")
   }
   //// Test if next prayer name is Fajr
-  if prevDayIshaStruct.nextPrayerName != "Fajr" {
-    t.Errorf("incorrect next prayer name. Prayer name is not \"Fajr\", next prayer name is %s", prevDayIshaStruct.nextPrayerName)
+  if prevDayIshaStruct.NextPrayerName != "Fajr" {
+    t.Errorf("incorrect next prayer name. Prayer name is not \"Fajr\", next prayer name is %s", prevDayIshaStruct.NextPrayerName)
   }
 
   // Test if current prayer is current day Isha 
@@ -139,16 +139,16 @@ func TestDetermineWhichPrayerIsha(t *testing.T) {
   currDayIshaStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t2CurrentTime)
 
   //// Test if current prayer name is Isha
-  if currDayIshaStruct.currentPrayerName != "Isha" {
-    t.Errorf("incorrect prayer name output.  Prayer name is not \"Isha\", current prayer name is %s", currDayIshaStruct.currentPrayerName)
+  if currDayIshaStruct.CurrentPrayerName != "Isha" {
+    t.Errorf("incorrect prayer name output.  Prayer name is not \"Isha\", current prayer name is %s", currDayIshaStruct.CurrentPrayerName)
   }
   //// Test if currious day Isha is false
-  if currDayIshaStruct.previousDayIsha {
+  if currDayIshaStruct.PreviousDayIsha {
     t.Error("currious day Isha is not true when it should be")
   }
   //// Test if next prayer name is Fajr
-  if currDayIshaStruct.nextPrayerName != "Fajr" {
-    t.Errorf("incorrect next prayer name. Prayer name is not \"Fajr\", next prayer name is %s", currDayIshaStruct.nextPrayerName)
+  if currDayIshaStruct.NextPrayerName != "Fajr" {
+    t.Errorf("incorrect next prayer name. Prayer name is not \"Fajr\", next prayer name is %s", currDayIshaStruct.NextPrayerName)
   }
 }
 
@@ -166,12 +166,12 @@ func TestDetermineWhichPrayerFajr(t *testing.T) {
   }
 
   // Test if current prayer name is Fajr
-  if currDayFajrStruct.currentPrayerName != "Fajr" {
-    t.Errorf("incorrect current prayer name. Current day fajr test did not return Fajr as current prayer name %s", currDayFajrStruct.currentPrayerName)
+  if currDayFajrStruct.CurrentPrayerName != "Fajr" {
+    t.Errorf("incorrect current prayer name. Current day fajr test did not return Fajr as current prayer name %s", currDayFajrStruct.CurrentPrayerName)
   }
   // Test if next prayer name is Dhuhr
-  if currDayFajrStruct.nextPrayerName != "Dhuhr" {
-    t.Errorf("incorrect next prayer name. Current day fajr test did not return Dhuhr as next prayer name %s", currDayFajrStruct.nextPrayerName)
+  if currDayFajrStruct.NextPrayerName != "Dhuhr" {
+    t.Errorf("incorrect next prayer name. Current day fajr test did not return Dhuhr as next prayer name %s", currDayFajrStruct.NextPrayerName)
   }
 }
 
@@ -189,12 +189,12 @@ func TestDetermineWhichPrayerSunrise(t *testing.T) {
   }
 
   // Test if current prayer name is Fajr
-  if currDayPrayerStruct.currentPrayerName != "Sunrise" {
-    t.Errorf("incorrect current prayer name. Current day sunrise test did not return Sunrise as current prayer name %s", currDayPrayerStruct.currentPrayerName)
+  if currDayPrayerStruct.CurrentPrayerName != "Sunrise" {
+    t.Errorf("incorrect current prayer name. Current day sunrise test did not return Sunrise as current prayer name %s", currDayPrayerStruct.CurrentPrayerName)
   }
   // Test if next prayer name is Dhuhr
-  if currDayPrayerStruct.nextPrayerName != "Dhuhr" {
-    t.Errorf("incorrect next prayer name. Current day sunrise test did not return Dhuhr as next prayer name %s", currDayPrayerStruct.nextPrayerName)
+  if currDayPrayerStruct.NextPrayerName != "Dhuhr" {
+    t.Errorf("incorrect next prayer name. Current day sunrise test did not return Dhuhr as next prayer name %s", currDayPrayerStruct.NextPrayerName)
   }
 }
 
@@ -212,12 +212,12 @@ func TestDetermineWhichPrayerDhuhr(t *testing.T) {
   }
 
   // Test if current prayer name is Fajr
-  if currDayDhuhrStruct.currentPrayerName != "Dhuhr" {
-    t.Errorf("incorrect current prayer name. Current day dhuhr test did not return Dhuhr as current prayer name %s", currDayDhuhrStruct.currentPrayerName)
+  if currDayDhuhrStruct.CurrentPrayerName != "Dhuhr" {
+    t.Errorf("incorrect current prayer name. Current day dhuhr test did not return Dhuhr as current prayer name %s", currDayDhuhrStruct.CurrentPrayerName)
   }
   // Test if next prayer name is Dhuhr
-  if currDayDhuhrStruct.nextPrayerName != "Asr" {
-    t.Errorf("incorrect next prayer name. Current day dhuhr test did not return Asr as next prayer name %s", currDayDhuhrStruct.nextPrayerName)
+  if currDayDhuhrStruct.NextPrayerName != "Asr" {
+    t.Errorf("incorrect next prayer name. Current day dhuhr test did not return Asr as next prayer name %s", currDayDhuhrStruct.NextPrayerName)
   }
 }
 
@@ -235,12 +235,12 @@ func TestDetermineWhichPrayerAsr(t *testing.T) {
   }
 
   // Test if current prayer name is Fajr
-  if currDayPrayerStruct.currentPrayerName != "Asr" {
-    t.Errorf("incorrect current prayer name. Current day asr test did not return Asr as current prayer name %s", currDayPrayerStruct.currentPrayerName)
+  if currDayPrayerStruct.CurrentPrayerName != "Asr" {
+    t.Errorf("incorrect current prayer name. Current day asr test did not return Asr as current prayer name %s", currDayPrayerStruct.CurrentPrayerName)
   }
   // Test if next prayer name is Dhuhr
-  if currDayPrayerStruct.nextPrayerName != "Maghrib" {
-    t.Errorf("incorrect next prayer name. Current day asr test did not return Maghrib as next prayer name %s", currDayPrayerStruct.nextPrayerName)
+  if currDayPrayerStruct.NextPrayerName != "Maghrib" {
+    t.Errorf("incorrect next prayer name. Current day asr test did not return Maghrib as next prayer name %s", currDayPrayerStruct.NextPrayerName)
   }
 }
 
@@ -258,11 +258,11 @@ func TestDetermineWhichPrayerMaghrib(t *testing.T) {
   }
 
   // Test if current prayer name is Fajr
-  if currDayPrayerStruct.currentPrayerName != "Maghrib" {
-    t.Errorf("incorrect current prayer name. Current day asr test did not return Maghrib as current prayer name %s", currDayPrayerStruct.currentPrayerName)
+  if currDayPrayerStruct.CurrentPrayerName != "Maghrib" {
+    t.Errorf("incorrect current prayer name. Current day asr test did not return Maghrib as current prayer name %s", currDayPrayerStruct.CurrentPrayerName)
   }
   // Test if next prayer name is Dhuhr
-  if currDayPrayerStruct.nextPrayerName != "Isha" {
-    t.Errorf("incorrect next prayer name. Current day asr test did not return Isha as next prayer name %s", currDayPrayerStruct.nextPrayerName)
+  if currDayPrayerStruct.NextPrayerName != "Isha" {
+    t.Errorf("incorrect next prayer name. Current day asr test did not return Isha as next prayer name %s", currDayPrayerStruct.NextPrayerName)
   }
 }
