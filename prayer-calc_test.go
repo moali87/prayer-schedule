@@ -116,7 +116,7 @@ func TestDetermineWhichPrayerIsha(t *testing.T) {
 
   // Test if current prayer is previous day Isha 
   t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 4, 36, 0, 0, timeLocation)
-  prevDayIshaStruct, err := determineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+  prevDayIshaStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
   if err != nil {
     t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
   }
@@ -136,7 +136,7 @@ func TestDetermineWhichPrayerIsha(t *testing.T) {
 
   // Test if current prayer is current day Isha 
   t2CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 21, 36, 0, 0, timeLocation)
-  currDayIshaStruct, err := determineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t2CurrentTime)
+  currDayIshaStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t2CurrentTime)
 
   //// Test if current prayer name is Isha
   if currDayIshaStruct.currentPrayerName != "Isha" {
@@ -160,7 +160,7 @@ func TestDetermineWhichPrayerFajr(t *testing.T) {
   }
 
   t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 4, 37, 0, 0, timeLocation)
-  currDayFajrStruct, err := determineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+  currDayFajrStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
   if err != nil {
     t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
   }
@@ -183,7 +183,7 @@ func TestDetermineWhichPrayerSunrise(t *testing.T) {
   }
 
   t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 6, 37, 0, 0, timeLocation)
-  currDayPrayerStruct, err := determineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+  currDayPrayerStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
   if err != nil {
     t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
   }
@@ -206,7 +206,7 @@ func TestDetermineWhichPrayerDhuhr(t *testing.T) {
   }
 
   t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 13, 37, 0, 0, timeLocation)
-  currDayDhuhrStruct, err := determineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+  currDayDhuhrStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
   if err != nil {
     t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
   }
@@ -229,7 +229,7 @@ func TestDetermineWhichPrayerAsr(t *testing.T) {
   }
 
   t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 16, 37, 0, 0, timeLocation)
-  currDayPrayerStruct, err := determineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+  currDayPrayerStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
   if err != nil {
     t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
   }
@@ -252,7 +252,7 @@ func TestDetermineWhichPrayerMaghrib(t *testing.T) {
   }
 
   t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 19, 37, 0, 0, timeLocation)
-  currDayPrayerStruct, err := determineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+  currDayPrayerStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
   if err != nil {
     t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
   }
