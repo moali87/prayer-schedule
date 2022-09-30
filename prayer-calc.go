@@ -51,8 +51,8 @@ type determinedPrayerOutput struct {
   timeDiff time.Duration
 }
 
-// determineWhichPrayer returns the current and next prayer.  It will also state if the current prayer is at the previous day
-func determineWhichPrayer(
+// DetermineWhichPrayer returns the current and next prayer.  It will also state if the current prayer is at the previous day
+func DetermineWhichPrayer(
   previousDayPrayers *FiveDailyPrayers,
   currentDayPrayers *FiveDailyPrayers,
   nextDayPrayers *FiveDailyPrayers,
