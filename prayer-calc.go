@@ -42,7 +42,8 @@ func determineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) bool 
   return false
 }
 
-type determinedPrayerOutput struct {
+// DeterminedPrayerOutput is the structure which contains current and next prayer name and their time difference
+type DeterminedPrayerOutput struct {
   currentPrayerName string
   nextPrayerName string
   previousDayIsha bool
@@ -56,9 +57,9 @@ func DetermineWhichPrayer(
   previousDayPrayers *FiveDailyPrayers,
   currentDayPrayers *FiveDailyPrayers,
   nextDayPrayers *FiveDailyPrayers,
-  clientTimeNow *time.Time) (*determinedPrayerOutput, error) {
+  clientTimeNow *time.Time) (*DeterminedPrayerOutput, error) {
 
-    output := &determinedPrayerOutput{}
+    output := &DeterminedPrayerOutput{}
     // Determine if current prayer is Isha for the current day
     if determineSelectedPrayer(*clientTimeNow, currentDayPrayers.Isha) {
       output.currentPrayerName = "Isha"
