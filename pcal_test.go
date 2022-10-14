@@ -15,40 +15,40 @@ func TestPrayerCalendarWithAPIKey(t *testing.T) {
 		panic(errMsg)
 	}
 	beverlyHillsTime := time.Date(2022, time.October, 22, 10, 10, 0, 0, beverlyHillsTimeZone)
-  customerInputWithAPIKey := &CustomerLocationInput{
+	customerInputWithAPIKey := &CustomerLocationInput{
 		CountryCode: "USA",
 		HEREAPIKey:  os.Getenv("HERE_API_KEY"),
 		PostalCode:  "90210",
-    CustTime:  beverlyHillsTime,
-  }
+		CustTime:    beverlyHillsTime,
+	}
 
-  hereInput := new(CustomerLocationInputWithHEREAPIKey)
-  hereInput.CountryCode = customerInputWithAPIKey.CountryCode
-  hereInput.PostalCode = customerInputWithAPIKey.PostalCode
-  hereInput.HEREAPIKey = customerInputWithAPIKey.HEREAPIKey
-  hereResp, hereAddressData, err := HERECustomerLocation(hereInput)
-  if err != nil {
-    t.Errorf("HERE returned an error: %v", err)
-  }
-  t.Logf("HERE full response: %v", hereResp)
-  t.Logf("HERE addresss data: %v", hereAddressData)
-  t.Logf("HERE Longitude: %v", hereAddressData.Coordiantes.Lng)
-  t.Logf("HERE Latitude: %v", hereAddressData.Coordiantes.Lat)
+	hereInput := new(CustomerLocationInputWithHEREAPIKey)
+	hereInput.CountryCode = customerInputWithAPIKey.CountryCode
+	hereInput.PostalCode = customerInputWithAPIKey.PostalCode
+	hereInput.HEREAPIKey = customerInputWithAPIKey.HEREAPIKey
+	hereResp, hereAddressData, err := HERECustomerLocation(hereInput)
+	if err != nil {
+		t.Errorf("HERE returned an error: %v", err)
+	}
+	t.Logf("HERE full response: %v", hereResp)
+	t.Logf("HERE addresss data: %v", hereAddressData)
+	t.Logf("HERE Longitude: %v", hereAddressData.Coordiantes.Lng)
+	t.Logf("HERE Latitude: %v", hereAddressData.Coordiantes.Lat)
 
-  monthlyData, err := PrayerCalendar(customerInputWithAPIKey)
-  if err != nil {
-    t.Errorf("error looking up customer data with api key: %v", err)
-  }
+	monthlyData, err := PrayerCalendar(customerInputWithAPIKey)
+	if err != nil {
+		t.Errorf("error looking up customer data with api key: %v", err)
+	}
 
-  if monthlyData.Code != 200 {
-    t.Errorf("customerInputWithAPIKey returned code is not 200: %v", err)
-  }
+	if monthlyData.currentMonthCalendar.Code != 200 {
+		t.Errorf("customerInputWithAPIKey returned code is not 200: %v", err)
+	}
 
-  if len(monthlyData.Data) == 0 {
-    t.Error("monthly data did not return any timings")
-  }
+	if len(monthlyData.currentMonthCalendar.Data) == 0 {
+		t.Error("monthly data did not return any timings")
+	}
 
-  fmt.Printf("Some prayer data with API Key %v", monthlyData.Data[0].Timings.Asr)
+	fmt.Printf("Some prayer data with API Key %v", monthlyData.currentMonthCalendar.Data[0].Timings.Asr)
 }
 
 func TestPrayerCalendarWithoutAPIKey(t *testing.T) {
@@ -58,27 +58,27 @@ func TestPrayerCalendarWithoutAPIKey(t *testing.T) {
 		panic(errMsg)
 	}
 	beverlyHillsTime := time.Date(2022, time.October, 22, 10, 10, 0, 0, beverlyHillsTimeZone)
-  
-  customerInputWithAPIKey := &CustomerLocationInput{
-    Coordinates: PrayerCalendarInputCoordinates{
-      Latitude: 34.1030,
-      Longitude: -118.4105,
-    },
-    CustTime:  beverlyHillsTime,
-  }
 
-  monthlyData, err := PrayerCalendar(customerInputWithAPIKey)
-  if err != nil {
-    t.Errorf("error looking up customer data with api key: %v", err)
-  }
+	customerInputWithAPIKey := &CustomerLocationInput{
+		Coordinates: PrayerCalendarInputCoordinates{
+			Latitude:  34.1030,
+			Longitude: -118.4105,
+		},
+		CustTime: beverlyHillsTime,
+	}
 
-  if monthlyData.Code != 200 {
-    t.Errorf("customerInputWithAPIKey returned code is not 200: %v", err)
-  }
+	monthlyData, err := PrayerCalendar(customerInputWithAPIKey)
+	if err != nil {
+		t.Errorf("error looking up customer data with api key: %v", err)
+	}
 
-  if len(monthlyData.Data) == 0 {
-    t.Error("monthly data did not return any timings")
-  }
+	if monthlyData.currentMonthCalendar.Code != 200 {
+		t.Errorf("customerInputWithAPIKey returned code is not 200: %v", err)
+	}
 
-  fmt.Printf("Some prayer data without API Key: %v", monthlyData.Data[0].Timings.Asr)
+	if len(monthlyData.currentMonthCalendar.Data) == 0 {
+		t.Error("monthly data did not return any timings")
+	}
+
+	fmt.Printf("Some prayer data without API Key: %v", monthlyData.currentMonthCalendar.Data[0].Timings.Asr)
 }

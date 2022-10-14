@@ -3,9 +3,9 @@ package schedule
 
 import (
 	"encoding/json"
-  "strings"
 	"fmt"
 	"net/http"
+	"strings"
 )
 
 // CustomerLocationInputWithHEREAPIKey is a struct which contains data to lookup customer data to the nearest city
@@ -29,19 +29,19 @@ type HERECustomerCityAddressOutput struct {
 }
 
 type HERECustomerCityAddressOutputAddressLabel struct {
-  Label string `json:"Label"`
-  CountryCode string `json:"countryCode"`
-  PostalCode string `json:"postalCode"`
+	Label       string `json:"Label"`
+	CountryCode string `json:"countryCode"`
+	PostalCode  string `json:"postalCode"`
 }
 
 // HERECustomerLocationOutput is the general output which is decoded by JSON from HERE url request
 type HERECustomerLocationOutput struct {
 	StatusCode int
-  Items []struct {
-    Address HERECustomerCityAddressOutputAddressLabel
-    Title string `json:"title"`
-    Position CustomerCoordinatesOutput
-  }
+	Items      []struct {
+		Address  HERECustomerCityAddressOutputAddressLabel
+		Title    string `json:"title"`
+		Position CustomerCoordinatesOutput
+	}
 	/* Response   struct {
 		View []struct {
 			Result []struct {
@@ -58,7 +58,7 @@ type HERECustomerLocationOutput struct {
 func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAPIKey) (*HERECustomerLocationOutput, *HERECustomerCityAddressOutput, error) {
 	const hereRestAPI = "https://geocode.search.hereapi.com/v1/geocode"
 	reqURL := fmt.Sprintf(
-    "%s?in=countryCode:%s&qq=postalCode=%s&apiKey=%s",
+		"%s?in=countryCode:%s&qq=postalCode=%s&apiKey=%s",
 		hereRestAPI,
 		strings.ToUpper(hereRequestParamaters.CountryCode),
 		hereRequestParamaters.PostalCode,
@@ -83,7 +83,7 @@ func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAP
 	json.NewDecoder(req.Body).Decode(resp)
 	resp.StatusCode = req.StatusCode
 	if req.StatusCode != 200 {
-    fmt.Println(reqURL)
+		fmt.Println(reqURL)
 		fmt.Printf("HERE API response is not 200: %v", req.StatusCode)
 		fmt.Println(resp)
 		return nil, nil, fmt.Errorf("Return code not 200: %d", req.StatusCode)
@@ -91,15 +91,15 @@ func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAP
 
 	HERECustomerCityAddressOutputStruct := new(HERECustomerCityAddressOutput)
 
-  for i := 0; i < len(resp.Items); i++ {
-    if resp.Items[i].Address.PostalCode == hereRequestParamaters.PostalCode {
-      HERECustomerAddress := resp.Items[i]
-      HERECustomerCityAddressOutputStruct.Country = HERECustomerAddress.Address.CountryCode
-      HERECustomerCityAddressOutputStruct.PostalCode = HERECustomerAddress.Address.PostalCode
-      HERECustomerCityAddressOutputStruct.Coordiantes.Lat = HERECustomerAddress.Position.Lat
-      HERECustomerCityAddressOutputStruct.Coordiantes.Lng = HERECustomerAddress.Position.Lng
-    }
-  }
+	for i := 0; i < len(resp.Items); i++ {
+		if resp.Items[i].Address.PostalCode == hereRequestParamaters.PostalCode {
+			HERECustomerAddress := resp.Items[i]
+			HERECustomerCityAddressOutputStruct.Country = HERECustomerAddress.Address.CountryCode
+			HERECustomerCityAddressOutputStruct.PostalCode = HERECustomerAddress.Address.PostalCode
+			HERECustomerCityAddressOutputStruct.Coordiantes.Lat = HERECustomerAddress.Position.Lat
+			HERECustomerCityAddressOutputStruct.Coordiantes.Lng = HERECustomerAddress.Position.Lng
+		}
+	}
 
 	return resp, HERECustomerCityAddressOutputStruct, nil
 }
