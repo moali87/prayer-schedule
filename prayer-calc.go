@@ -11,7 +11,7 @@ import (
 )
 
 // determineSelectedPrayer tests whether prayerToTest is within current time or after
-func determineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) bool {
+func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) bool {
 	prayerToTestHourStr := strings.Split(prayerToTest, ":")[0]
 	prayerToTestMinutePre := strings.Split(prayerToTest, ":")[1]
 	prayerToTestMinuteStr := strings.Split(prayerToTestMinutePre, "(")[0]
@@ -61,7 +61,7 @@ func DetermineWhichPrayer(
 
 	output := &DeterminedPrayerOutput{}
 	// Determine if current prayer is Isha for the current day
-	if determineSelectedPrayer(*clientTimeNow, currentDayPrayers.Isha) {
+	if DetermineSelectedPrayer(*clientTimeNow, currentDayPrayers.Isha) {
 		output.CurrentPrayerName = "Isha"
 		output.NextPrayerName = "Fajr"
 		output.PreviousDayIsha = false
@@ -96,7 +96,7 @@ func DetermineWhichPrayer(
 
 	for key := 0; key < len(prayerMapKeys); key++ {
 		nextPrayerName := prayerMapKeys[key]
-		selectedPrayerDetermined := determineSelectedPrayer(*clientTimeNow, currentDayPrayersMap[nextPrayerName])
+		selectedPrayerDetermined := DetermineSelectedPrayer(*clientTimeNow, currentDayPrayersMap[nextPrayerName])
 		if nextPrayerName == "Fajr" && !selectedPrayerDetermined {
 			output.CurrentPrayerName = "Isha"
 			output.CurrentPrayerTime = currentDayPrayersMap[output.CurrentPrayerName]

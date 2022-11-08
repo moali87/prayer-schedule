@@ -38,9 +38,9 @@ type PCalOutput struct {
 }
 
 type PCalOutputs struct {
-	currentMonthCalendar  PCalOutput
-	previousMonthCalendar PCalOutput
-	nextMonthCalendar     PCalOutput
+	CurrentMonthCalendar  PCalOutput
+	PreviousMonthCalendar PCalOutput
+	NextMonthCalendar     PCalOutput
 }
 
 func BeginningOfMonth(date time.Time) time.Time {
@@ -77,16 +77,16 @@ func aladhanReq(reqURL <-chan string, pcalOutput chan <-*PCalOutput) {
 		panic("Err")
 	}
 
-  pcalOutput <- resp
+    pcalOutput <- resp
 
-  close(pcalOutput)
+    close(pcalOutput)
 }
 
 /*
 aladhanData returns the total monthly prayers of given month, coordinates, and zip from aladhan.
 https://api.aladhan.com/v1/calendar?latitude=51.508515&longitude=-0.1254872&method=1&month=4&year=2017
 */
-func aladhanData(input *PCalInput) (*PCalOutputs, error) {
+func AladhanData(input *PCalInput) (*PCalOutputs, error) {
 	outputs := new(PCalOutputs)
 	// Check to build if previous and next month calendar will be required
 	var prevReqURL string
@@ -125,45 +125,45 @@ func aladhanData(input *PCalInput) (*PCalOutputs, error) {
 		input.CustTime.Year(),
 	)
 
-  var urlChan = make(chan string)
+    var urlChan = make(chan string)
 
 	if prevReqURL != "" {
-    monthOutputChan := make(chan *PCalOutput)
+        monthOutputChan := make(chan *PCalOutput)
 		go aladhanReq(urlChan, monthOutputChan)
-    urlChan <- prevReqURL
-    fmt.Println("I've reached previousURL")
-    monthOutput, ok := <-monthOutputChan
+        urlChan <- prevReqURL
+        fmt.Println("I've reached previousURL")
+        monthOutput, ok := <-monthOutputChan
     if ok == false {
       panic("previous month output goroutine failed")
     }
     // close(monthOutputChan)
-    outputs.previousMonthCalendar = *monthOutput
+    outputs.PreviousMonthCalendar = *monthOutput
 	}
 
 	if nextReqURL != "" {
-    monthOutputChan := make(chan *PCalOutput)
-		go aladhanReq(urlChan, monthOutputChan)
-    urlChan <- nextReqURL
-    fmt.Println("I've reached nextURL")
-    previousMonthOutput, ok := <-monthOutputChan
+        monthOutputChan := make(chan *PCalOutput)
+        go aladhanReq(urlChan, monthOutputChan)
+        urlChan <- nextReqURL
+        fmt.Println("I've reached nextURL")
+        previousMonthOutput, ok := <-monthOutputChan
     if ok == false {
       panic("next month output goroutine failed")
     }
     // close(monthOutputChan)
-    outputs.nextMonthCalendar = *previousMonthOutput
+    outputs.NextMonthCalendar = *previousMonthOutput
 	}
 
-  monthOutputChan := make(chan *PCalOutput)
-  go aladhanReq(urlChan, monthOutputChan)
-  urlChan <- reqURL
-  fmt.Println("I've reached this point")
-  monthOutput, ok := <-monthOutputChan
-  if ok == false {
-    panic("current month output goroutine failed")
-  }
+    monthOutputChan := make(chan *PCalOutput)
+    go aladhanReq(urlChan, monthOutputChan)
+    urlChan <- reqURL
+    fmt.Println("I've reached this point")
+    monthOutput, ok := <-monthOutputChan
+    if ok == false {
+        panic("current month output goroutine failed")
+    }
 
-  // close(monthOutputChan)
-	outputs.currentMonthCalendar = *monthOutput
+    // close(monthOutputChan)
+	outputs.CurrentMonthCalendar = *monthOutput
 
 	return outputs, nil
 }

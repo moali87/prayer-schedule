@@ -1,8 +1,9 @@
-package schedule
+package schedule_test
 
 import (
 	"testing"
 	"time"
+    psched "github.com/moali87/prayer-schedule"
 )
 
 func TestDetermineSelectedPrayer(t *testing.T) {
@@ -16,7 +17,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   current minute should be before prayer time minute, meaning the prayer has not started yet
 	*/
 	t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 13, 0, 0, 0, timeLocation)
-	t1DeterminedTime := determineSelectedPrayer(t1CurrentTime, "13:04")
+	t1DeterminedTime := psched.DetermineSelectedPrayer(t1CurrentTime, "13:04")
 	if t1DeterminedTime {
 		t.Error("determined time with same hour but off before minute returned an incorrect result")
 	}
@@ -26,7 +27,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   current minute should be after prayer time minute, meaning the prayer has started
 	*/
 	t2CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 13, 5, 0, 0, timeLocation)
-	t2DeterminedTime := determineSelectedPrayer(t2CurrentTime, "13:04")
+	t2DeterminedTime := psched.DetermineSelectedPrayer(t2CurrentTime, "13:04")
 	if !t2DeterminedTime {
 		t.Error("determined time with same hour but off after minute returned an incorrect result")
 	}
@@ -36,7 +37,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   prayer has started
 	*/
 	t3CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 13, 5, 0, 0, timeLocation)
-	t3DeterminedTime := determineSelectedPrayer(t3CurrentTime, "13:04")
+	t3DeterminedTime := psched.DetermineSelectedPrayer(t3CurrentTime, "13:04")
 	if !t3DeterminedTime {
 		t.Error("determined time with same hour and same minute returned an incorrect result")
 	}
@@ -46,7 +47,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   Hour should be before prayer time hour, meaning the prayer has not started yet
 	*/
 	t4CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 12, 5, 0, 0, timeLocation)
-	t4DeterminedTime := determineSelectedPrayer(t4CurrentTime, "13:04")
+	t4DeterminedTime := psched.DetermineSelectedPrayer(t4CurrentTime, "13:04")
 	if t4DeterminedTime {
 		t.Error("determined time with different before hour and same minute returned an incorrect result")
 	}
@@ -56,7 +57,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   Hour should be after prayer time hour, meaning the prayer has started
 	*/
 	t5CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 14, 5, 0, 0, timeLocation)
-	t5DeterminedTime := determineSelectedPrayer(t5CurrentTime, "13:04")
+	t5DeterminedTime := psched.DetermineSelectedPrayer(t5CurrentTime, "13:04")
 	if !t5DeterminedTime {
 		t.Error("determined time with different after hour and same minute returned an incorrect result")
 	}
@@ -65,7 +66,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   Test both hour and minute is before prayer hour and minute
 	*/
 	t6CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 12, 0, 0, 0, timeLocation)
-	t6DeterminedTime := determineSelectedPrayer(t6CurrentTime, "13:04")
+	t6DeterminedTime := psched.DetermineSelectedPrayer(t6CurrentTime, "13:04")
 	if t6DeterminedTime {
 		t.Error("determined time with different after hour and same minute returned an incorrect result")
 	}
@@ -74,13 +75,13 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   Test both hour and minute is after prayer hour and minute
 	*/
 	t7CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 17, 10, 0, 0, timeLocation)
-	t7DeterminedTime := determineSelectedPrayer(t7CurrentTime, "13:04")
+	t7DeterminedTime := psched.DetermineSelectedPrayer(t7CurrentTime, "13:04")
 	if !t7DeterminedTime {
 		t.Error("determined time with different after hour and same minute returned an incorrect result")
 	}
 }
 
-var prevDayPrayerStruct = &FiveDailyPrayers{
+var prevDayPrayerStruct = &psched.FiveDailyPrayers{
 	Fajr:    "04:37",
 	Sunrise: "06:36",
 	Dhuhr:   "13:04",
@@ -89,7 +90,7 @@ var prevDayPrayerStruct = &FiveDailyPrayers{
 	Isha:    "21:32",
 }
 
-var currDayPrayerStruct = &FiveDailyPrayers{
+var currDayPrayerStruct = &psched.FiveDailyPrayers{
 	Fajr:    "04:37",
 	Sunrise: "06:36",
 	Dhuhr:   "13:04",
@@ -98,7 +99,7 @@ var currDayPrayerStruct = &FiveDailyPrayers{
 	Isha:    "21:33",
 }
 
-var nextDayPrayerStruct = &FiveDailyPrayers{
+var nextDayPrayerStruct = &psched.FiveDailyPrayers{
 	Fajr:    "04:38",
 	Sunrise: "06:36",
 	Dhuhr:   "13:04",
@@ -116,7 +117,7 @@ func TestDetermineWhichPrayerIsha(t *testing.T) {
 
 	// Test if current prayer is previous day Isha
 	t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 4, 36, 0, 0, timeLocation)
-	prevDayIshaStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+	prevDayIshaStruct, err := psched.DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
 	if err != nil {
 		t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
 	}
@@ -136,7 +137,7 @@ func TestDetermineWhichPrayerIsha(t *testing.T) {
 
 	// Test if current prayer is current day Isha
 	t2CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 21, 36, 0, 0, timeLocation)
-	currDayIshaStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t2CurrentTime)
+	currDayIshaStruct, err := psched.DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t2CurrentTime)
 
 	//// Test if current prayer name is Isha
 	if currDayIshaStruct.CurrentPrayerName != "Isha" {
@@ -160,7 +161,7 @@ func TestDetermineWhichPrayerFajr(t *testing.T) {
 	}
 
 	t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 4, 37, 0, 0, timeLocation)
-	currDayFajrStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+	currDayFajrStruct, err := psched.DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
 	if err != nil {
 		t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
 	}
@@ -183,7 +184,7 @@ func TestDetermineWhichPrayerSunrise(t *testing.T) {
 	}
 
 	t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 6, 37, 0, 0, timeLocation)
-	currDayPrayerStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+	currDayPrayerStruct, err := psched.DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
 	if err != nil {
 		t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
 	}
@@ -206,7 +207,7 @@ func TestDetermineWhichPrayerDhuhr(t *testing.T) {
 	}
 
 	t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 13, 37, 0, 0, timeLocation)
-	currDayDhuhrStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+	currDayDhuhrStruct, err := psched.DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
 	if err != nil {
 		t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
 	}
@@ -229,7 +230,7 @@ func TestDetermineWhichPrayerAsr(t *testing.T) {
 	}
 
 	t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 16, 37, 0, 0, timeLocation)
-	currDayPrayerStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+	currDayPrayerStruct, err := psched.DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
 	if err != nil {
 		t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
 	}
@@ -252,7 +253,7 @@ func TestDetermineWhichPrayerMaghrib(t *testing.T) {
 	}
 
 	t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 19, 37, 0, 0, timeLocation)
-	currDayPrayerStruct, err := DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
+	currDayPrayerStruct, err := psched.DetermineWhichPrayer(prevDayPrayerStruct, currDayPrayerStruct, nextDayPrayerStruct, &t1CurrentTime)
 	if err != nil {
 		t.Errorf("unable to determine current, previous, and next prayer time structure: %s", err.Error())
 	}
