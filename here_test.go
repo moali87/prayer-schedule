@@ -1,18 +1,19 @@
-package schedule
+package schedule_test
 
 import (
 	"os"
 	"testing"
+    psched "github.com/moali87/prayer-schedule"
 )
 
 func TestHEREAPI(t *testing.T) {
-	customerLocationInput := &CustomerLocationInputWithHEREAPIKey{
+	customerLocationInput := &psched.CustomerLocationInputWithHEREAPIKey{
 		CountryCode: "USA",
 		HEREAPIKey:  os.Getenv("HERE_API_KEY"),
 		PostalCode:  "90210",
 	}
 
-	custLocRet, custCityLocRet, err := HERECustomerLocation(customerLocationInput)
+	custLocRet, custCityLocRet, err := psched.HERECustomerLocation(customerLocationInput)
 	if err != nil {
 		t.Errorf("Customer location lookup failed %s", err.Error())
 	}
