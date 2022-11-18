@@ -66,10 +66,10 @@ func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAP
         var countryCodeFound bool
         countryCodeFound = false
         var countryCodeErr error
-        countryCode = ccStruct[hereRequestParamaters.CountryCode]["iso3"]
         for k := range ccStruct {
             if k == hereRequestParamaters.CountryCode {
                 countryCodeFound = true
+                countryCode = ccStruct[hereRequestParamaters.CountryCode]["iso3"]
             } 
         }
         if !countryCodeFound {
