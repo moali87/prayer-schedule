@@ -4,7 +4,9 @@ package schedule
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 	"strings"
 )
 
@@ -42,34 +44,52 @@ type HERECustomerLocationOutput struct {
 		Title    string `json:"title"`
 		Position CustomerCoordinatesOutput
 	}
-	/* Response   struct {
-		View []struct {
-			Result []struct {
-				Location struct {
-					DisplayPosition CustomerCoordinatesOutput
-					Address         HERECustomerCityAddressOutput
-				}
-			}
-		}
-	} */
 }
 
 // HERECustomerLocation Returns customer location data to the nearest city
 func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAPIKey) (*HERECustomerLocationOutput, *HERECustomerCityAddressOutput, error) {
+	resp := new(HERECustomerLocationOutput)
+    var countryCode string
+    countryCode = hereRequestParamaters.CountryCode
+    if len(hereRequestParamaters.CountryCode) < 3 {
+        ccJsonFile, err := os.Open("country-codes.json")
+        if err != nil {
+            log.Fatalf("unable to convert two character country code into three character code %s", err)
+        }
+
+        var ccStruct map[string]map[string]string
+        jsonDec := json.NewDecoder(ccJsonFile)
+        err = jsonDec.Decode(&ccStruct)
+        if err != nil {
+            log.Fatalf("unable to decode json into struct %s", err)
+        }
+        var countryCodeFound bool
+        countryCodeFound = false
+        var countryCodeErr error
+        for k := range ccStruct {
+            if k == hereRequestParamaters.CountryCode {
+                countryCodeFound = true
+                countryCode = ccStruct[hereRequestParamaters.CountryCode]["iso3"]
+            } 
+        }
+        if !countryCodeFound {
+            return resp, nil, countryCodeErr
+        }
+    }
+
 	const hereRestAPI = "https://geocode.search.hereapi.com/v1/geocode"
 	reqURL := fmt.Sprintf(
 		"%s?in=countryCode:%s&qq=postalCode=%s&apiKey=%s",
 		hereRestAPI,
-		strings.ToUpper(hereRequestParamaters.CountryCode),
+		strings.ToUpper(countryCode),
 		hereRequestParamaters.PostalCode,
 		hereRequestParamaters.HEREAPIKey,
 	)
 
-	resp := new(HERECustomerLocationOutput)
 	req, err := http.Get(reqURL)
 	if err != nil {
 		errMsg := fmt.Errorf("Unable to retrieve customer location")
-		return nil, nil, errMsg
+		return resp, nil, errMsg
 	}
 
 	defer func() {
@@ -82,11 +102,11 @@ func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAP
 
 	json.NewDecoder(req.Body).Decode(resp)
 	resp.StatusCode = req.StatusCode
+    fmt.Println(req.StatusCode)
 	if req.StatusCode != 200 {
-		fmt.Println(reqURL)
 		fmt.Printf("HERE API response is not 200: %v", req.StatusCode)
 		fmt.Println(resp)
-		return nil, nil, fmt.Errorf("Return code not 200: %d", req.StatusCode)
+		return resp, nil, fmt.Errorf("Return code not 200: %d", req.StatusCode)
 	}
 
 	HERECustomerCityAddressOutputStruct := new(HERECustomerCityAddressOutput)

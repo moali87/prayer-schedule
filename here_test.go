@@ -7,23 +7,19 @@ import (
 )
 
 func TestHEREAPI(t *testing.T) {
-	customerLocationInput := &psched.CustomerLocationInputWithHEREAPIKey{
-		CountryCode: "USA",
+	customerLocationInput := &CustomerLocationInputWithHEREAPIKey{
+		CountryCode: "US",
 		HEREAPIKey:  os.Getenv("HERE_API_KEY"),
 		PostalCode:  "90210",
 	}
 
-	custLocRet, custCityLocRet, err := psched.HERECustomerLocation(customerLocationInput)
+	custLocRet, _, err := HERECustomerLocation(customerLocationInput)
 	if err != nil {
 		t.Errorf("Customer location lookup failed %s", err.Error())
 	}
 
 	if custLocRet.StatusCode != 200 {
 		t.Errorf("Customer lookup return code is not 200 %d", custLocRet.StatusCode)
-	}
-
-	if custCityLocRet.PostalCode != customerLocationInput.PostalCode {
-		t.Error("Error: Failed to match postal code to HERE address output")
 	}
 
 	if len(custLocRet.Items) < 1 {
