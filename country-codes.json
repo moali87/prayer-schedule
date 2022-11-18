@@ -1,0 +1,2114 @@
+{
+    "AF": {
+        "name": "Afghanistan",
+        "iso2": "AF",
+        "iso3": "AFG",
+        "nationality": "Afghan",
+        "code": "004",
+        "prefix": "93"
+    },
+    "AL": {
+        "name": "Albania",
+        "iso2": "AL",
+        "iso3": "ALB",
+        "nationality": "Albanian",
+        "code": "008",
+        "prefix": "355"
+    },
+    "DZ": {
+        "name": "Algeria",
+        "iso2": "DZ",
+        "iso3": "DZA",
+        "nationality": "Algerian",
+        "code": "012",
+        "prefix": "213"
+    },
+    "AS": {
+        "name": "American Samoa",
+        "iso2": "AS",
+        "iso3": "ASM",
+        "nationality": "",
+        "code": "016",
+        "prefix": "1+684"
+    },
+    "AD": {
+        "name": "Andorra",
+        "iso2": "AD",
+        "iso3": "AND",
+        "nationality": "Andorran",
+        "code": "020",
+        "prefix": "376"
+    },
+    "AO": {
+        "name": "Angola",
+        "iso2": "AO",
+        "iso3": "AGO",
+        "nationality": "Angolan",
+        "code": "024",
+        "prefix": "244"
+    },
+    "AI": {
+        "name": "Anguilla",
+        "iso2": "AI",
+        "iso3": "AIA",
+        "nationality": "",
+        "code": "660",
+        "prefix": "1+264"
+    },
+    "AQ": {
+        "name": "Antarctica",
+        "iso2": "AQ",
+        "iso3": "ATA",
+        "nationality": "",
+        "code": "010",
+        "prefix": "672"
+    },
+    "AG": {
+        "name": "Antigua and Barbuda",
+        "iso2": "AG",
+        "iso3": "ATG",
+        "nationality": "Antiguans, Barbudans",
+        "code": "028",
+        "prefix": "1+268"
+    },
+    "AR": {
+        "name": "Argentina",
+        "iso2": "AR",
+        "iso3": "ARG",
+        "nationality": "Argentine or Argentinean",
+        "code": "032",
+        "prefix": "54"
+    },
+    "AM": {
+        "name": "Armenia",
+        "iso2": "AM",
+        "iso3": "ARM",
+        "nationality": "Armenian",
+        "code": "051",
+        "prefix": "374"
+    },
+    "AW": {
+        "name": "Aruba",
+        "iso2": "AW",
+        "iso3": "ABW",
+        "nationality": "",
+        "code": "533",
+        "prefix": "297"
+    },
+    "AU": {
+        "name": "Australia",
+        "iso2": "AU",
+        "iso3": "AUS",
+        "nationality": "Australian or Ozzie or Aussie",
+        "code": "036",
+        "prefix": "61"
+    },
+    "AT": {
+        "name": "Austria",
+        "iso2": "AT",
+        "iso3": "AUT",
+        "nationality": "Austrian",
+        "code": "040",
+        "prefix": "43"
+    },
+    "AZ": {
+        "name": "Azerbaijan",
+        "iso2": "AZ",
+        "iso3": "AZE",
+        "nationality": "Azerbaijani",
+        "code": "031",
+        "prefix": "994"
+    },
+    "BS": {
+        "name": "Bahamas",
+        "iso2": "BS",
+        "iso3": "BHS",
+        "nationality": "Bahamian",
+        "code": "044",
+        "prefix": "1+242"
+    },
+    "BH": {
+        "name": "Bahrain",
+        "iso2": "BH",
+        "iso3": "BHR",
+        "nationality": "Bahraini",
+        "code": "048",
+        "prefix": "973"
+    },
+    "BD": {
+        "name": "Bangladesh",
+        "iso2": "BD",
+        "iso3": "BGD",
+        "nationality": "Bangladeshi",
+        "code": "050",
+        "prefix": "880"
+    },
+    "BB": {
+        "name": "Barbados",
+        "iso2": "BB",
+        "iso3": "BRB",
+        "nationality": "Barbadian or Bajuns",
+        "code": "052",
+        "prefix": "1+246"
+    },
+    "BY": {
+        "name": "Belarus",
+        "iso2": "BY",
+        "iso3": "BLR",
+        "nationality": "Belarusian",
+        "code": "112",
+        "prefix": "375"
+    },
+    "BE": {
+        "name": "Belgium",
+        "iso2": "BE",
+        "iso3": "BEL",
+        "nationality": "Belgian",
+        "code": "056",
+        "prefix": "32"
+    },
+    "BZ": {
+        "name": "Belize",
+        "iso2": "BZ",
+        "iso3": "BLZ",
+        "nationality": "Belizean",
+        "code": "084",
+        "prefix": "501"
+    },
+    "BJ": {
+        "name": "Benin",
+        "iso2": "BJ",
+        "iso3": "BEN",
+        "nationality": "Beninese",
+        "code": "204",
+        "prefix": "229"
+    },
+    "BM": {
+        "name": "Bermuda",
+        "iso2": "BM",
+        "iso3": "BMU",
+        "nationality": "",
+        "code": "060",
+        "prefix": "1+441"
+    },
+    "BT": {
+        "name": "Bhutan",
+        "iso2": "BT",
+        "iso3": "BTN",
+        "nationality": "Bhutanese",
+        "code": "064",
+        "prefix": "975"
+    },
+    "BO": {
+        "name": "Bolivia",
+        "iso2": "BO",
+        "iso3": "BOL",
+        "nationality": "Bolivian",
+        "code": "068",
+        "prefix": "591"
+    },
+    "BA": {
+        "name": "Bosnia and Herzegovina",
+        "iso2": "BA",
+        "iso3": "BIH",
+        "nationality": "Bosnian, Herzegovinian",
+        "code": "070",
+        "prefix": "387"
+    },
+    "BW": {
+        "name": "Botswana",
+        "iso2": "BW",
+        "iso3": "BWA",
+        "nationality": "Motswana , Batswana",
+        "code": "072",
+        "prefix": "267"
+    },
+    "BV": {
+        "name": "Bouvet Island",
+        "iso2": "BV",
+        "iso3": "BVT",
+        "nationality": "",
+        "code": "074",
+        "prefix": "NONE"
+    },
+    "BR": {
+        "name": "Brazil",
+        "iso2": "BR",
+        "iso3": "BRA",
+        "nationality": "Brazilian",
+        "code": "076",
+        "prefix": "55"
+    },
+    "BQ": {
+        "name": "British Antarctic Territory",
+        "iso2": "BQ",
+        "iso3": "BES",
+        "nationality": "",
+        "code": "535",
+        "prefix": "599"
+    },
+    "IO": {
+        "name": "British Indian Ocean Territory",
+        "iso2": "IO",
+        "iso3": "IOT",
+        "nationality": "",
+        "code": "086",
+        "prefix": "246"
+    },
+    "VG": {
+        "name": "British Virgin Islands",
+        "iso2": "VG",
+        "iso3": "VGB",
+        "nationality": "",
+        "code": "092",
+        "prefix": "1+284"
+    },
+    "BN": {
+        "name": "Brunei",
+        "iso2": "BN",
+        "iso3": "BRN",
+        "nationality": "Bruneian",
+        "code": "096",
+        "prefix": "673"
+    },
+    "BG": {
+        "name": "Bulgaria",
+        "iso2": "BG",
+        "iso3": "BGR",
+        "nationality": "Bulgarian",
+        "code": "100",
+        "prefix": "359"
+    },
+    "BF": {
+        "name": "Burkina Faso",
+        "iso2": "BF",
+        "iso3": "BFA",
+        "nationality": "Burkinabe",
+        "code": "854",
+        "prefix": "226"
+    },
+    "BI": {
+        "name": "Burundi",
+        "iso2": "BI",
+        "iso3": "BDI",
+        "nationality": "Burundian",
+        "code": "108",
+        "prefix": "257"
+    },
+    "KH": {
+        "name": "Cambodia",
+        "iso2": "KH",
+        "iso3": "KHM",
+        "nationality": "Cambodian",
+        "code": "116",
+        "prefix": "855"
+    },
+    "CM": {
+        "name": "Cameroon",
+        "iso2": "CM",
+        "iso3": "CMR",
+        "nationality": "Cameroonian",
+        "code": "120",
+        "prefix": "237"
+    },
+    "CA": {
+        "name": "Canada",
+        "iso2": "CA",
+        "iso3": "CAN",
+        "nationality": "Canadian",
+        "code": "124",
+        "prefix": "1"
+    },
+    "CT": {
+        "name": "Canton and Enderbury Islands",
+        "iso2": "CT",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "CV": {
+        "name": "Cape Verde",
+        "iso2": "CV",
+        "iso3": "CPV",
+        "nationality": "Cape Verdian or Cape Verdean",
+        "code": "132",
+        "prefix": "238"
+    },
+    "KY": {
+        "name": "Cayman Islands",
+        "iso2": "KY",
+        "iso3": "CYM",
+        "nationality": "",
+        "code": "136",
+        "prefix": "1+345"
+    },
+    "CF": {
+        "name": "Central African Republic",
+        "iso2": "CF",
+        "iso3": "CAF",
+        "nationality": "Central African",
+        "code": "140",
+        "prefix": "236"
+    },
+    "TD": {
+        "name": "Chad",
+        "iso2": "TD",
+        "iso3": "TCD",
+        "nationality": "Chadian",
+        "code": "148",
+        "prefix": "235"
+    },
+    "CL": {
+        "name": "Chile",
+        "iso2": "CL",
+        "iso3": "CHL",
+        "nationality": "Chilean",
+        "code": "152",
+        "prefix": "56"
+    },
+    "CN": {
+        "name": "China",
+        "iso2": "CN",
+        "iso3": "CHN",
+        "nationality": "Chinese",
+        "code": "156",
+        "prefix": "86"
+    },
+    "CX": {
+        "name": "Christmas Island",
+        "iso2": "CX",
+        "iso3": "CXR",
+        "nationality": "",
+        "code": "162",
+        "prefix": "61"
+    },
+    "CC": {
+        "name": "Cocos [Keeling] Islands",
+        "iso2": "CC",
+        "iso3": "CCK",
+        "nationality": "",
+        "code": "166",
+        "prefix": "61"
+    },
+    "CO": {
+        "name": "Colombia",
+        "iso2": "CO",
+        "iso3": "COL",
+        "nationality": "Colombian",
+        "code": "170",
+        "prefix": "57"
+    },
+    "KM": {
+        "name": "Comoros",
+        "iso2": "KM",
+        "iso3": "COM",
+        "nationality": "Comoran",
+        "code": "174",
+        "prefix": "269"
+    },
+    "CG": {
+        "name": "Congo - Brazzaville",
+        "iso2": "CG",
+        "iso3": "COG",
+        "nationality": "Congolese",
+        "code": "178",
+        "prefix": "242"
+    },
+    "CD": {
+        "name": "Congo - Kinshasa",
+        "iso2": "CD",
+        "iso3": "COD",
+        "nationality": "Congolese",
+        "code": "180",
+        "prefix": "243"
+    },
+    "CK": {
+        "name": "Cook Islands",
+        "iso2": "CK",
+        "iso3": "COK",
+        "nationality": "",
+        "code": "184",
+        "prefix": "682"
+    },
+    "CR": {
+        "name": "Costa Rica",
+        "iso2": "CR",
+        "iso3": "CRI",
+        "nationality": "Costa Rican",
+        "code": "188",
+        "prefix": "506"
+    },
+    "HR": {
+        "name": "Croatia",
+        "iso2": "HR",
+        "iso3": "HRV",
+        "nationality": "Croat or Croatian",
+        "code": "191",
+        "prefix": "385"
+    },
+    "CU": {
+        "name": "Cuba",
+        "iso2": "CU",
+        "iso3": "CUB",
+        "nationality": "Cuban",
+        "code": "192",
+        "prefix": "53"
+    },
+    "CY": {
+        "name": "Cyprus",
+        "iso2": "CY",
+        "iso3": "CYP",
+        "nationality": "Cypriot",
+        "code": "196",
+        "prefix": "357"
+    },
+    "CZ": {
+        "name": "Czech Republic",
+        "iso2": "CZ",
+        "iso3": "CZE",
+        "nationality": "Czech",
+        "code": "203",
+        "prefix": "420"
+    },
+    "CI": {
+        "name": "C\u00f4te d\u2019Ivoire",
+        "iso2": "CI",
+        "iso3": "CIV",
+        "nationality": "Ivorian",
+        "code": "384",
+        "prefix": "225"
+    },
+    "DK": {
+        "name": "Denmark",
+        "iso2": "DK",
+        "iso3": "DNK",
+        "nationality": "Dane or Danish",
+        "code": "208",
+        "prefix": "45"
+    },
+    "DJ": {
+        "name": "Djibouti",
+        "iso2": "DJ",
+        "iso3": "DJI",
+        "nationality": "Djibouti",
+        "code": "262",
+        "prefix": "253"
+    },
+    "DM": {
+        "name": "Dominica",
+        "iso2": "DM",
+        "iso3": "DMA",
+        "nationality": "Dominican",
+        "code": "212",
+        "prefix": "1+767"
+    },
+    "DO": {
+        "name": "Dominican Republic",
+        "iso2": "DO",
+        "iso3": "DOM",
+        "nationality": "Dominican",
+        "code": "214",
+        "prefix": "1+809, 8"
+    },
+    "NQ": {
+        "name": "Dronning Maud Land",
+        "iso2": "NQ",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "DD": {
+        "name": "East Germany",
+        "iso2": "DD",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "EC": {
+        "name": "Ecuador",
+        "iso2": "EC",
+        "iso3": "ECU",
+        "nationality": "Ecuadorean",
+        "code": "218",
+        "prefix": "593"
+    },
+    "EG": {
+        "name": "Egypt",
+        "iso2": "EG",
+        "iso3": "EGY",
+        "nationality": "Egyptian",
+        "code": "818",
+        "prefix": "20"
+    },
+    "SV": {
+        "name": "El Salvador",
+        "iso2": "SV",
+        "iso3": "SLV",
+        "nationality": "Salvadoran",
+        "code": "222",
+        "prefix": "503"
+    },
+    "GQ": {
+        "name": "Equatorial Guinea",
+        "iso2": "GQ",
+        "iso3": "GNQ",
+        "nationality": "Equatorial Guinean or Equatoguinean",
+        "code": "226",
+        "prefix": "240"
+    },
+    "ER": {
+        "name": "Eritrea",
+        "iso2": "ER",
+        "iso3": "ERI",
+        "nationality": "Eritrean",
+        "code": "232",
+        "prefix": "291"
+    },
+    "EE": {
+        "name": "Estonia",
+        "iso2": "EE",
+        "iso3": "EST",
+        "nationality": "Estonian",
+        "code": "233",
+        "prefix": "372"
+    },
+    "ET": {
+        "name": "Ethiopia",
+        "iso2": "ET",
+        "iso3": "ETH",
+        "nationality": "Ethiopian",
+        "code": "231",
+        "prefix": "251"
+    },
+    "FK": {
+        "name": "Falkland Islands",
+        "iso2": "FK",
+        "iso3": "FLK",
+        "nationality": "",
+        "code": "238",
+        "prefix": "500"
+    },
+    "FO": {
+        "name": "Faroe Islands",
+        "iso2": "FO",
+        "iso3": "FRO",
+        "nationality": "",
+        "code": "234",
+        "prefix": "298"
+    },
+    "FJ": {
+        "name": "Fiji",
+        "iso2": "FJ",
+        "iso3": "FJI",
+        "nationality": "Fijian",
+        "code": "242",
+        "prefix": "679"
+    },
+    "FI": {
+        "name": "Finland",
+        "iso2": "FI",
+        "iso3": "FIN",
+        "nationality": "Finn or Finnish",
+        "code": "246",
+        "prefix": "358"
+    },
+    "FR": {
+        "name": "France",
+        "iso2": "FR",
+        "iso3": "FRA",
+        "nationality": "French or Frenchman or Frenchwoman",
+        "code": "250",
+        "prefix": "33"
+    },
+    "GF": {
+        "name": "French Guiana",
+        "iso2": "GF",
+        "iso3": "GUF",
+        "nationality": "",
+        "code": "254",
+        "prefix": "594"
+    },
+    "PF": {
+        "name": "French Polynesia",
+        "iso2": "PF",
+        "iso3": "PYF",
+        "nationality": "",
+        "code": "258",
+        "prefix": "689"
+    },
+    "TF": {
+        "name": "French Southern Territories",
+        "iso2": "TF",
+        "iso3": "ATF",
+        "nationality": "",
+        "code": "260",
+        "prefix": "\\N"
+    },
+    "FQ": {
+        "name": "French Southern and Antarctic Territories",
+        "iso2": "FQ",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "GA": {
+        "name": "Gabon",
+        "iso2": "GA",
+        "iso3": "GAB",
+        "nationality": "Gabonese",
+        "code": "266",
+        "prefix": "241"
+    },
+    "GM": {
+        "name": "Gambia",
+        "iso2": "GM",
+        "iso3": "GMB",
+        "nationality": "Gambian",
+        "code": "270",
+        "prefix": "220"
+    },
+    "GE": {
+        "name": "Georgia",
+        "iso2": "GE",
+        "iso3": "GEO",
+        "nationality": "Georgian",
+        "code": "268",
+        "prefix": "995"
+    },
+    "DE": {
+        "name": "Germany",
+        "iso2": "DE",
+        "iso3": "DEU",
+        "nationality": "German",
+        "code": "276",
+        "prefix": "49"
+    },
+    "GH": {
+        "name": "Ghana",
+        "iso2": "GH",
+        "iso3": "GHA",
+        "nationality": "Ghanaian",
+        "code": "288",
+        "prefix": "233"
+    },
+    "GI": {
+        "name": "Gibraltar",
+        "iso2": "GI",
+        "iso3": "GIB",
+        "nationality": "",
+        "code": "292",
+        "prefix": "350"
+    },
+    "GR": {
+        "name": "Greece",
+        "iso2": "GR",
+        "iso3": "GRC",
+        "nationality": "Greek",
+        "code": "300",
+        "prefix": "30"
+    },
+    "GL": {
+        "name": "Greenland",
+        "iso2": "GL",
+        "iso3": "GRL",
+        "nationality": "",
+        "code": "304",
+        "prefix": "299"
+    },
+    "GD": {
+        "name": "Grenada",
+        "iso2": "GD",
+        "iso3": "GRD",
+        "nationality": "Grenadian or Grenadan",
+        "code": "308",
+        "prefix": "1+473"
+    },
+    "GP": {
+        "name": "Guadeloupe",
+        "iso2": "GP",
+        "iso3": "GLP",
+        "nationality": "",
+        "code": "312",
+        "prefix": "590"
+    },
+    "GU": {
+        "name": "Guam",
+        "iso2": "GU",
+        "iso3": "GUM",
+        "nationality": "",
+        "code": "316",
+        "prefix": "1+671"
+    },
+    "GT": {
+        "name": "Guatemala",
+        "iso2": "GT",
+        "iso3": "GTM",
+        "nationality": "Guatemalan",
+        "code": "320",
+        "prefix": "502"
+    },
+    "GG": {
+        "name": "Guernsey",
+        "iso2": "GG",
+        "iso3": "GGY",
+        "nationality": "",
+        "code": "831",
+        "prefix": "44"
+    },
+    "GN": {
+        "name": "Guinea",
+        "iso2": "GN",
+        "iso3": "GIN",
+        "nationality": "Guinean",
+        "code": "324",
+        "prefix": "224"
+    },
+    "GW": {
+        "name": "Guinea-Bissau",
+        "iso2": "GW",
+        "iso3": "GNB",
+        "nationality": "Guinea-Bissauan",
+        "code": "624",
+        "prefix": "245"
+    },
+    "GY": {
+        "name": "Guyana",
+        "iso2": "GY",
+        "iso3": "GUY",
+        "nationality": "Guyanese",
+        "code": "328",
+        "prefix": "592"
+    },
+    "HT": {
+        "name": "Haiti",
+        "iso2": "HT",
+        "iso3": "HTI",
+        "nationality": "Haitian",
+        "code": "332",
+        "prefix": "509"
+    },
+    "HM": {
+        "name": "Heard Island and McDonald Islands",
+        "iso2": "HM",
+        "iso3": "HMD",
+        "nationality": "",
+        "code": "334",
+        "prefix": "NONE"
+    },
+    "HN": {
+        "name": "Honduras",
+        "iso2": "HN",
+        "iso3": "HND",
+        "nationality": "Honduran",
+        "code": "340",
+        "prefix": "504"
+    },
+    "HK": {
+        "name": "Hong Kong SAR China",
+        "iso2": "HK",
+        "iso3": "HKG",
+        "nationality": "",
+        "code": "344",
+        "prefix": "852"
+    },
+    "HU": {
+        "name": "Hungary",
+        "iso2": "HU",
+        "iso3": "HUN",
+        "nationality": "Hungarian",
+        "code": "348",
+        "prefix": "36"
+    },
+    "IS": {
+        "name": "Iceland",
+        "iso2": "IS",
+        "iso3": "ISL",
+        "nationality": "Icelander",
+        "code": "352",
+        "prefix": "354"
+    },
+    "IN": {
+        "name": "India",
+        "iso2": "IN",
+        "iso3": "IND",
+        "nationality": "Indian",
+        "code": "356",
+        "prefix": "91"
+    },
+    "ID": {
+        "name": "Indonesia",
+        "iso2": "ID",
+        "iso3": "IDN",
+        "nationality": "Indonesian",
+        "code": "360",
+        "prefix": "62"
+    },
+    "IR": {
+        "name": "Iran",
+        "iso2": "IR",
+        "iso3": "IRN",
+        "nationality": "Iranian",
+        "code": "364",
+        "prefix": "98"
+    },
+    "IQ": {
+        "name": "Iraq",
+        "iso2": "IQ",
+        "iso3": "IRQ",
+        "nationality": "Iraqi",
+        "code": "368",
+        "prefix": "964"
+    },
+    "IE": {
+        "name": "Ireland",
+        "iso2": "IE",
+        "iso3": "IRL",
+        "nationality": "Irishman or Irishwoman or Irish",
+        "code": "372",
+        "prefix": "353"
+    },
+    "IM": {
+        "name": "Isle of Man",
+        "iso2": "IM",
+        "iso3": "IMN",
+        "nationality": "",
+        "code": "833",
+        "prefix": "44"
+    },
+    "IL": {
+        "name": "Israel",
+        "iso2": "IL",
+        "iso3": "ISR",
+        "nationality": "Israeli",
+        "code": "376",
+        "prefix": "972"
+    },
+    "IT": {
+        "name": "Italy",
+        "iso2": "IT",
+        "iso3": "ITA",
+        "nationality": "Italian",
+        "code": "380",
+        "prefix": "39"
+    },
+    "JM": {
+        "name": "Jamaica",
+        "iso2": "JM",
+        "iso3": "JAM",
+        "nationality": "Jamaican",
+        "code": "388",
+        "prefix": "1+876"
+    },
+    "JP": {
+        "name": "Japan",
+        "iso2": "JP",
+        "iso3": "JPN",
+        "nationality": "Japanese",
+        "code": "392",
+        "prefix": "81"
+    },
+    "JE": {
+        "name": "Jersey",
+        "iso2": "JE",
+        "iso3": "JEY",
+        "nationality": "",
+        "code": "832",
+        "prefix": "44"
+    },
+    "JT": {
+        "name": "Johnston Island",
+        "iso2": "JT",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "JO": {
+        "name": "Jordan",
+        "iso2": "JO",
+        "iso3": "JOR",
+        "nationality": "Jordanian",
+        "code": "400",
+        "prefix": "962"
+    },
+    "KZ": {
+        "name": "Kazakhstan",
+        "iso2": "KZ",
+        "iso3": "KAZ",
+        "nationality": "Kazakhstani",
+        "code": "398",
+        "prefix": "7"
+    },
+    "KE": {
+        "name": "Kenya",
+        "iso2": "KE",
+        "iso3": "KEN",
+        "nationality": "Kenyan",
+        "code": "404",
+        "prefix": "254"
+    },
+    "KI": {
+        "name": "Kiribati",
+        "iso2": "KI",
+        "iso3": "KIR",
+        "nationality": "I-Kiribati",
+        "code": "296",
+        "prefix": "686"
+    },
+    "KW": {
+        "name": "Kuwait",
+        "iso2": "KW",
+        "iso3": "KWT",
+        "nationality": "Kuwaiti",
+        "code": "414",
+        "prefix": "965"
+    },
+    "KG": {
+        "name": "Kyrgyzstan",
+        "iso2": "KG",
+        "iso3": "KGZ",
+        "nationality": "Kyrgyz or Kirghiz",
+        "code": "417",
+        "prefix": "996"
+    },
+    "LA": {
+        "name": "Laos",
+        "iso2": "LA",
+        "iso3": "LAO",
+        "nationality": "Lao or Laotian",
+        "code": "418",
+        "prefix": "856"
+    },
+    "LV": {
+        "name": "Latvia",
+        "iso2": "LV",
+        "iso3": "LVA",
+        "nationality": "Latvian",
+        "code": "428",
+        "prefix": "371"
+    },
+    "LB": {
+        "name": "Lebanon",
+        "iso2": "LB",
+        "iso3": "LBN",
+        "nationality": "Lebanese",
+        "code": "422",
+        "prefix": "961"
+    },
+    "LS": {
+        "name": "Lesotho",
+        "iso2": "LS",
+        "iso3": "LSO",
+        "nationality": "Mosotho",
+        "code": "426",
+        "prefix": "266"
+    },
+    "LR": {
+        "name": "Liberia",
+        "iso2": "LR",
+        "iso3": "LBR",
+        "nationality": "Liberian",
+        "code": "430",
+        "prefix": "231"
+    },
+    "LY": {
+        "name": "Libya",
+        "iso2": "LY",
+        "iso3": "LBY",
+        "nationality": "Libyan",
+        "code": "434",
+        "prefix": "218"
+    },
+    "LI": {
+        "name": "Liechtenstein",
+        "iso2": "LI",
+        "iso3": "LIE",
+        "nationality": "Liechtensteiner",
+        "code": "438",
+        "prefix": "423"
+    },
+    "LT": {
+        "name": "Lithuania",
+        "iso2": "LT",
+        "iso3": "LTU",
+        "nationality": "Lithuanian",
+        "code": "440",
+        "prefix": "370"
+    },
+    "LU": {
+        "name": "Luxembourg",
+        "iso2": "LU",
+        "iso3": "LUX",
+        "nationality": "Luxembourger",
+        "code": "442",
+        "prefix": "352"
+    },
+    "MO": {
+        "name": "Macau SAR China",
+        "iso2": "MO",
+        "iso3": "MAC",
+        "nationality": "",
+        "code": "446",
+        "prefix": "853"
+    },
+    "MK": {
+        "name": "Macedonia",
+        "iso2": "MK",
+        "iso3": "MKD",
+        "nationality": "Macedonian",
+        "code": "807",
+        "prefix": "389"
+    },
+    "MG": {
+        "name": "Madagascar",
+        "iso2": "MG",
+        "iso3": "MDG",
+        "nationality": "Malagasy",
+        "code": "450",
+        "prefix": "261"
+    },
+    "MW": {
+        "name": "Malawi",
+        "iso2": "MW",
+        "iso3": "MWI",
+        "nationality": "Malawian",
+        "code": "454",
+        "prefix": "265"
+    },
+    "MY": {
+        "name": "Malaysia",
+        "iso2": "MY",
+        "iso3": "MYS",
+        "nationality": "Malaysian",
+        "code": "458",
+        "prefix": "60"
+    },
+    "MV": {
+        "name": "Maldives",
+        "iso2": "MV",
+        "iso3": "MDV",
+        "nationality": "Maldivan",
+        "code": "462",
+        "prefix": "960"
+    },
+    "ML": {
+        "name": "Mali",
+        "iso2": "ML",
+        "iso3": "MLI",
+        "nationality": "Malian",
+        "code": "466",
+        "prefix": "223"
+    },
+    "MT": {
+        "name": "Malta",
+        "iso2": "MT",
+        "iso3": "MLT",
+        "nationality": "Maltese",
+        "code": "470",
+        "prefix": "356"
+    },
+    "MH": {
+        "name": "Marshall Islands",
+        "iso2": "MH",
+        "iso3": "MHL",
+        "nationality": "Marshallese",
+        "code": "584",
+        "prefix": "692"
+    },
+    "MQ": {
+        "name": "Martinique",
+        "iso2": "MQ",
+        "iso3": "MTQ",
+        "nationality": "",
+        "code": "474",
+        "prefix": "596"
+    },
+    "MR": {
+        "name": "Mauritania",
+        "iso2": "MR",
+        "iso3": "MRT",
+        "nationality": "Mauritanian",
+        "code": "478",
+        "prefix": "222"
+    },
+    "MU": {
+        "name": "Mauritius",
+        "iso2": "MU",
+        "iso3": "MUS",
+        "nationality": "Mauritian",
+        "code": "480",
+        "prefix": "230"
+    },
+    "YT": {
+        "name": "Mayotte",
+        "iso2": "YT",
+        "iso3": "MYT",
+        "nationality": "",
+        "code": "175",
+        "prefix": "262"
+    },
+    "FX": {
+        "name": "Metropolitan France",
+        "iso2": "FX",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "MX": {
+        "name": "Mexico",
+        "iso2": "MX",
+        "iso3": "MEX",
+        "nationality": "Mexican",
+        "code": "484",
+        "prefix": "52"
+    },
+    "FM": {
+        "name": "Micronesia",
+        "iso2": "FM",
+        "iso3": "FSM",
+        "nationality": "Micronesian",
+        "code": "583",
+        "prefix": "691"
+    },
+    "MI": {
+        "name": "Midway Islands",
+        "iso2": "MI",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "MD": {
+        "name": "Moldova",
+        "iso2": "MD",
+        "iso3": "MDA",
+        "nationality": "Moldovan",
+        "code": "498",
+        "prefix": "373"
+    },
+    "MC": {
+        "name": "Monaco",
+        "iso2": "MC",
+        "iso3": "MCO",
+        "nationality": "Monegasque or Monacan",
+        "code": "492",
+        "prefix": "377"
+    },
+    "MN": {
+        "name": "Mongolia",
+        "iso2": "MN",
+        "iso3": "MNG",
+        "nationality": "Mongolian",
+        "code": "496",
+        "prefix": "976"
+    },
+    "ME": {
+        "name": "Montenegro",
+        "iso2": "ME",
+        "iso3": "MNE",
+        "nationality": "Montenegrin",
+        "code": "499",
+        "prefix": "382"
+    },
+    "MS": {
+        "name": "Montserrat",
+        "iso2": "MS",
+        "iso3": "MSR",
+        "nationality": "",
+        "code": "500",
+        "prefix": "1+664"
+    },
+    "MA": {
+        "name": "Morocco",
+        "iso2": "MA",
+        "iso3": "MAR",
+        "nationality": "Moroccan",
+        "code": "504",
+        "prefix": "212"
+    },
+    "MZ": {
+        "name": "Mozambique",
+        "iso2": "MZ",
+        "iso3": "MOZ",
+        "nationality": "Mozambican",
+        "code": "508",
+        "prefix": "258"
+    },
+    "MM": {
+        "name": "Myanmar [Burma]",
+        "iso2": "MM",
+        "iso3": "MMR",
+        "nationality": "Burmese or Myanmarese",
+        "code": "104",
+        "prefix": "95"
+    },
+    "NA": {
+        "name": "Namibia",
+        "iso2": "NA",
+        "iso3": "NAM",
+        "nationality": "Namibian",
+        "code": "516",
+        "prefix": "264"
+    },
+    "NR": {
+        "name": "Nauru",
+        "iso2": "NR",
+        "iso3": "NRU",
+        "nationality": "Nauruan",
+        "code": "520",
+        "prefix": "674"
+    },
+    "NP": {
+        "name": "Nepal",
+        "iso2": "NP",
+        "iso3": "NPL",
+        "nationality": "Nepalese",
+        "code": "524",
+        "prefix": "977"
+    },
+    "NL": {
+        "name": "Netherlands",
+        "iso2": "NL",
+        "iso3": "NLD",
+        "nationality": "Netherlander, Dutchman, Dutchwoman, Hollander or Dutch",
+        "code": "528",
+        "prefix": "31"
+    },
+    "AN": {
+        "name": "Netherlands Antilles",
+        "iso2": "AN",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "NT": {
+        "name": "Neutral Zone",
+        "iso2": "NT",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "NC": {
+        "name": "New Caledonia",
+        "iso2": "NC",
+        "iso3": "NCL",
+        "nationality": "",
+        "code": "540",
+        "prefix": "687"
+    },
+    "NZ": {
+        "name": "New Zealand",
+        "iso2": "NZ",
+        "iso3": "NZL",
+        "nationality": "New Zealander or Kiwi",
+        "code": "554",
+        "prefix": "64"
+    },
+    "NI": {
+        "name": "Nicaragua",
+        "iso2": "NI",
+        "iso3": "NIC",
+        "nationality": "Nicaraguan",
+        "code": "558",
+        "prefix": "505"
+    },
+    "NE": {
+        "name": "Niger",
+        "iso2": "NE",
+        "iso3": "NER",
+        "nationality": "Nigerien",
+        "code": "562",
+        "prefix": "227"
+    },
+    "NG": {
+        "name": "Nigeria",
+        "iso2": "NG",
+        "iso3": "NGA",
+        "nationality": "Nigerian",
+        "code": "566",
+        "prefix": "234"
+    },
+    "NU": {
+        "name": "Niue",
+        "iso2": "NU",
+        "iso3": "NIU",
+        "nationality": "",
+        "code": "570",
+        "prefix": "683"
+    },
+    "NF": {
+        "name": "Norfolk Island",
+        "iso2": "NF",
+        "iso3": "NFK",
+        "nationality": "",
+        "code": "574",
+        "prefix": "672"
+    },
+    "KP": {
+        "name": "North Korea",
+        "iso2": "KP",
+        "iso3": "PRK",
+        "nationality": "North Korean",
+        "code": "408",
+        "prefix": "850"
+    },
+    "VD": {
+        "name": "North Vietnam",
+        "iso2": "VD",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "MP": {
+        "name": "Northern Mariana Islands",
+        "iso2": "MP",
+        "iso3": "MNP",
+        "nationality": "",
+        "code": "580",
+        "prefix": "1+670"
+    },
+    "NO": {
+        "name": "Norway",
+        "iso2": "NO",
+        "iso3": "NOR",
+        "nationality": "Norwegian",
+        "code": "578",
+        "prefix": "47"
+    },
+    "OM": {
+        "name": "Oman",
+        "iso2": "OM",
+        "iso3": "OMN",
+        "nationality": "Omani",
+        "code": "512",
+        "prefix": "968"
+    },
+    "PC": {
+        "name": "Pacific Islands Trust Territory",
+        "iso2": "PC",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "PK": {
+        "name": "Pakistan",
+        "iso2": "PK",
+        "iso3": "PAK",
+        "nationality": "Pakistani",
+        "code": "586",
+        "prefix": "92"
+    },
+    "PW": {
+        "name": "Palau",
+        "iso2": "PW",
+        "iso3": "PLW",
+        "nationality": "Palauan",
+        "code": "585",
+        "prefix": "680"
+    },
+    "PS": {
+        "name": "Palestinian Territories",
+        "iso2": "PS",
+        "iso3": "PSE",
+        "nationality": "",
+        "code": "275",
+        "prefix": "970"
+    },
+    "PA": {
+        "name": "Panama",
+        "iso2": "PA",
+        "iso3": "PAN",
+        "nationality": "Panamanian",
+        "code": "591",
+        "prefix": "507"
+    },
+    "PZ": {
+        "name": "Panama Canal Zone",
+        "iso2": "PZ",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "PG": {
+        "name": "Papua New Guinea",
+        "iso2": "PG",
+        "iso3": "PNG",
+        "nationality": "Papua New Guinean",
+        "code": "598",
+        "prefix": "675"
+    },
+    "PY": {
+        "name": "Paraguay",
+        "iso2": "PY",
+        "iso3": "PRY",
+        "nationality": "Paraguayan",
+        "code": "600",
+        "prefix": "595"
+    },
+    "YD": {
+        "name": "People's Democratic Republic of Yemen",
+        "iso2": "YD",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "PE": {
+        "name": "Peru",
+        "iso2": "PE",
+        "iso3": "PER",
+        "nationality": "Peruvian",
+        "code": "604",
+        "prefix": "51"
+    },
+    "PH": {
+        "name": "Philippines",
+        "iso2": "PH",
+        "iso3": "PHL",
+        "nationality": "Filipino",
+        "code": "608",
+        "prefix": "63"
+    },
+    "PN": {
+        "name": "Pitcairn Islands",
+        "iso2": "PN",
+        "iso3": "PCN",
+        "nationality": "",
+        "code": "612",
+        "prefix": "NONE"
+    },
+    "PL": {
+        "name": "Poland",
+        "iso2": "PL",
+        "iso3": "POL",
+        "nationality": "Pole or Polish",
+        "code": "616",
+        "prefix": "48"
+    },
+    "PT": {
+        "name": "Portugal",
+        "iso2": "PT",
+        "iso3": "PRT",
+        "nationality": "Portuguese",
+        "code": "620",
+        "prefix": "351"
+    },
+    "PR": {
+        "name": "Puerto Rico",
+        "iso2": "PR",
+        "iso3": "PRI",
+        "nationality": "",
+        "code": "630",
+        "prefix": "1+939"
+    },
+    "QA": {
+        "name": "Qatar",
+        "iso2": "QA",
+        "iso3": "QAT",
+        "nationality": "Qatari",
+        "code": "634",
+        "prefix": "974"
+    },
+    "RO": {
+        "name": "Romania",
+        "iso2": "RO",
+        "iso3": "ROU",
+        "nationality": "Romanian",
+        "code": "642",
+        "prefix": "40"
+    },
+    "RU": {
+        "name": "Russia",
+        "iso2": "RU",
+        "iso3": "RUS",
+        "nationality": "Russian",
+        "code": "643",
+        "prefix": "7"
+    },
+    "RW": {
+        "name": "Rwanda",
+        "iso2": "RW",
+        "iso3": "RWA",
+        "nationality": "Rwandan",
+        "code": "646",
+        "prefix": "250"
+    },
+    "RE": {
+        "name": "R\u00e9union",
+        "iso2": "RE",
+        "iso3": "REU",
+        "nationality": "",
+        "code": "638",
+        "prefix": "262"
+    },
+    "BL": {
+        "name": "Saint Barth\u00e9lemy",
+        "iso2": "BL",
+        "iso3": "BLM",
+        "nationality": "",
+        "code": "652",
+        "prefix": "590"
+    },
+    "SH": {
+        "name": "Saint Helena",
+        "iso2": "SH",
+        "iso3": "SHN",
+        "nationality": "",
+        "code": "654",
+        "prefix": "290"
+    },
+    "KN": {
+        "name": "Saint Kitts and Nevis",
+        "iso2": "KN",
+        "iso3": "KNA",
+        "nationality": "Kittian and Nevisian",
+        "code": "659",
+        "prefix": "1+869"
+    },
+    "LC": {
+        "name": "Saint Lucia",
+        "iso2": "LC",
+        "iso3": "LCA",
+        "nationality": "Saint Lucian",
+        "code": "662",
+        "prefix": "1+758"
+    },
+    "MF": {
+        "name": "Saint Martin",
+        "iso2": "MF",
+        "iso3": "MAF",
+        "nationality": "",
+        "code": "663",
+        "prefix": "590"
+    },
+    "PM": {
+        "name": "Saint Pierre and Miquelon",
+        "iso2": "PM",
+        "iso3": "SPM",
+        "nationality": "",
+        "code": "666",
+        "prefix": "508"
+    },
+    "VC": {
+        "name": "Saint Vincent and the Grenadines",
+        "iso2": "VC",
+        "iso3": "VCT",
+        "nationality": "",
+        "code": "670",
+        "prefix": "1+784"
+    },
+    "WS": {
+        "name": "Samoa",
+        "iso2": "WS",
+        "iso3": "WSM",
+        "nationality": "Samoan",
+        "code": "882",
+        "prefix": "685"
+    },
+    "SM": {
+        "name": "San Marino",
+        "iso2": "SM",
+        "iso3": "SMR",
+        "nationality": "Sammarinese or San Marinese",
+        "code": "674",
+        "prefix": "378"
+    },
+    "SA": {
+        "name": "Saudi Arabia",
+        "iso2": "SA",
+        "iso3": "SAU",
+        "nationality": "Saudi or Saudi Arabian",
+        "code": "682",
+        "prefix": "966"
+    },
+    "SN": {
+        "name": "Senegal",
+        "iso2": "SN",
+        "iso3": "SEN",
+        "nationality": "Senegalese",
+        "code": "686",
+        "prefix": "221"
+    },
+    "RS": {
+        "name": "Serbia",
+        "iso2": "RS",
+        "iso3": "SRB",
+        "nationality": "Serbian",
+        "code": "688",
+        "prefix": "381"
+    },
+    "CS": {
+        "name": "Serbia and Montenegro",
+        "iso2": "CS",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "SC": {
+        "name": "Seychelles",
+        "iso2": "SC",
+        "iso3": "SYC",
+        "nationality": "Seychellois",
+        "code": "690",
+        "prefix": "248"
+    },
+    "SL": {
+        "name": "Sierra Leone",
+        "iso2": "SL",
+        "iso3": "SLE",
+        "nationality": "Sierra Leonean",
+        "code": "694",
+        "prefix": "232"
+    },
+    "SG": {
+        "name": "Singapore",
+        "iso2": "SG",
+        "iso3": "SGP",
+        "nationality": "Singaporean",
+        "code": "702",
+        "prefix": "65"
+    },
+    "SK": {
+        "name": "Slovakia",
+        "iso2": "SK",
+        "iso3": "SVK",
+        "nationality": "Slovak or Slovakian",
+        "code": "703",
+        "prefix": "421"
+    },
+    "SI": {
+        "name": "Slovenia",
+        "iso2": "SI",
+        "iso3": "SVN",
+        "nationality": "Slovene or Slovenian",
+        "code": "705",
+        "prefix": "386"
+    },
+    "SB": {
+        "name": "Solomon Islands",
+        "iso2": "SB",
+        "iso3": "SLB",
+        "nationality": "Solomon Islander",
+        "code": "090",
+        "prefix": "677"
+    },
+    "SO": {
+        "name": "Somalia",
+        "iso2": "SO",
+        "iso3": "SOM",
+        "nationality": "Somali",
+        "code": "706",
+        "prefix": "252"
+    },
+    "ZA": {
+        "name": "South Africa",
+        "iso2": "ZA",
+        "iso3": "ZAF",
+        "nationality": "South African",
+        "code": "710",
+        "prefix": "27"
+    },
+    "GS": {
+        "name": "South Georgia and the South Sandwich Islands",
+        "iso2": "GS",
+        "iso3": "SGS",
+        "nationality": "",
+        "code": "239",
+        "prefix": "500"
+    },
+    "KR": {
+        "name": "South Korea",
+        "iso2": "KR",
+        "iso3": "KOR",
+        "nationality": "South Korean",
+        "code": "410",
+        "prefix": "82"
+    },
+    "ES": {
+        "name": "Spain",
+        "iso2": "ES",
+        "iso3": "ESP",
+        "nationality": "Spaniard or Spanish",
+        "code": "724",
+        "prefix": "34"
+    },
+    "LK": {
+        "name": "Sri Lanka",
+        "iso2": "LK",
+        "iso3": "LKA",
+        "nationality": "Sri Lankan",
+        "code": "144",
+        "prefix": "94"
+    },
+    "SD": {
+        "name": "Sudan",
+        "iso2": "SD",
+        "iso3": "SDN",
+        "nationality": "Sudanese",
+        "code": "729",
+        "prefix": "249"
+    },
+    "SR": {
+        "name": "Suriname",
+        "iso2": "SR",
+        "iso3": "SUR",
+        "nationality": "Surinamer",
+        "code": "740",
+        "prefix": "597"
+    },
+    "SJ": {
+        "name": "Svalbard and Jan Mayen",
+        "iso2": "SJ",
+        "iso3": "SJM",
+        "nationality": "",
+        "code": "744",
+        "prefix": "47"
+    },
+    "SZ": {
+        "name": "Swaziland",
+        "iso2": "SZ",
+        "iso3": "SWZ",
+        "nationality": "Swazi",
+        "code": "748",
+        "prefix": "268"
+    },
+    "SE": {
+        "name": "Sweden",
+        "iso2": "SE",
+        "iso3": "SWE",
+        "nationality": "Swede or Swedish",
+        "code": "752",
+        "prefix": "46"
+    },
+    "CH": {
+        "name": "Switzerland",
+        "iso2": "CH",
+        "iso3": "CHE",
+        "nationality": "Swiss",
+        "code": "756",
+        "prefix": "41"
+    },
+    "SY": {
+        "name": "Syria",
+        "iso2": "SY",
+        "iso3": "SYR",
+        "nationality": "Syrian",
+        "code": "760",
+        "prefix": "963"
+    },
+    "ST": {
+        "name": "S\u00e3o Tom\u00e9 and Pr\u00edncipe",
+        "iso2": "ST",
+        "iso3": "STP",
+        "nationality": "Sao Tomean",
+        "code": "678",
+        "prefix": "239"
+    },
+    "TW": {
+        "name": "Taiwan",
+        "iso2": "TW",
+        "iso3": "TWN",
+        "nationality": "Taiwanese",
+        "code": "158",
+        "prefix": "886"
+    },
+    "TJ": {
+        "name": "Tajikistan",
+        "iso2": "TJ",
+        "iso3": "TJK",
+        "nationality": "Tajik or Tadzhik",
+        "code": "762",
+        "prefix": "992"
+    },
+    "TZ": {
+        "name": "Tanzania",
+        "iso2": "TZ",
+        "iso3": "TZA",
+        "nationality": "Tanzanian",
+        "code": "834",
+        "prefix": "255"
+    },
+    "TH": {
+        "name": "Thailand",
+        "iso2": "TH",
+        "iso3": "THA",
+        "nationality": "Thai",
+        "code": "764",
+        "prefix": "66"
+    },
+    "TL": {
+        "name": "Timor-Leste",
+        "iso2": "TL",
+        "iso3": "TLS",
+        "nationality": "East Timorese",
+        "code": "626",
+        "prefix": "670"
+    },
+    "TG": {
+        "name": "Togo",
+        "iso2": "TG",
+        "iso3": "TGO",
+        "nationality": "Togolese",
+        "code": "768",
+        "prefix": "228"
+    },
+    "TK": {
+        "name": "Tokelau",
+        "iso2": "TK",
+        "iso3": "TKL",
+        "nationality": "",
+        "code": "772",
+        "prefix": "690"
+    },
+    "TO": {
+        "name": "Tonga",
+        "iso2": "TO",
+        "iso3": "TON",
+        "nationality": "Tongan",
+        "code": "776",
+        "prefix": "676"
+    },
+    "TT": {
+        "name": "Trinidad and Tobago",
+        "iso2": "TT",
+        "iso3": "TTO",
+        "nationality": "Trinidadian or Tobagonian",
+        "code": "780",
+        "prefix": "1+868"
+    },
+    "TN": {
+        "name": "Tunisia",
+        "iso2": "TN",
+        "iso3": "TUN",
+        "nationality": "Tunisian",
+        "code": "788",
+        "prefix": "216"
+    },
+    "TR": {
+        "name": "Turkey",
+        "iso2": "TR",
+        "iso3": "TUR",
+        "nationality": "Turk or Turkish",
+        "code": "792",
+        "prefix": "90"
+    },
+    "TM": {
+        "name": "Turkmenistan",
+        "iso2": "TM",
+        "iso3": "TKM",
+        "nationality": "Turkmen",
+        "code": "795",
+        "prefix": "993"
+    },
+    "TC": {
+        "name": "Turks and Caicos Islands",
+        "iso2": "TC",
+        "iso3": "TCA",
+        "nationality": "",
+        "code": "796",
+        "prefix": "1+649"
+    },
+    "TV": {
+        "name": "Tuvalu",
+        "iso2": "TV",
+        "iso3": "TUV",
+        "nationality": "Tuvaluan",
+        "code": "798",
+        "prefix": "688"
+    },
+    "UM": {
+        "name": "U.S. Minor Outlying Islands",
+        "iso2": "UM",
+        "iso3": "UMI",
+        "nationality": "",
+        "code": "581",
+        "prefix": "NONE"
+    },
+    "PU": {
+        "name": "U.S. Miscellaneous Pacific Islands",
+        "iso2": "PU",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "VI": {
+        "name": "U.S. Virgin Islands",
+        "iso2": "VI",
+        "iso3": "VIR",
+        "nationality": "",
+        "code": "850",
+        "prefix": "1+340"
+    },
+    "UG": {
+        "name": "Uganda",
+        "iso2": "UG",
+        "iso3": "UGA",
+        "nationality": "Ugandan",
+        "code": "800",
+        "prefix": "256"
+    },
+    "UA": {
+        "name": "Ukraine",
+        "iso2": "UA",
+        "iso3": "UKR",
+        "nationality": "Ukrainian",
+        "code": "804",
+        "prefix": "380"
+    },
+    "SU": {
+        "name": "Union of Soviet Socialist Republics",
+        "iso2": "SU",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "AE": {
+        "name": "United Arab Emirates",
+        "iso2": "AE",
+        "iso3": "ARE",
+        "nationality": "Emirian",
+        "code": "784",
+        "prefix": "971"
+    },
+    "GB": {
+        "name": "United Kingdom",
+        "iso2": "GB",
+        "iso3": "GBR",
+        "nationality": "Briton or British",
+        "code": "826",
+        "prefix": "44"
+    },
+    "US": {
+        "name": "United States",
+        "iso2": "US",
+        "iso3": "USA",
+        "nationality": "American",
+        "code": "840",
+        "prefix": "1"
+    },
+    "ZZ": {
+        "name": "Unknown or Invalid Region",
+        "iso2": "ZZ",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "UY": {
+        "name": "Uruguay",
+        "iso2": "UY",
+        "iso3": "URY",
+        "nationality": "Uruguayan",
+        "code": "858",
+        "prefix": "598"
+    },
+    "UZ": {
+        "name": "Uzbekistan",
+        "iso2": "UZ",
+        "iso3": "UZB",
+        "nationality": "Uzbek or Uzbekistani",
+        "code": "860",
+        "prefix": "998"
+    },
+    "VU": {
+        "name": "Vanuatu",
+        "iso2": "VU",
+        "iso3": "VUT",
+        "nationality": "Ni-Vanuatu",
+        "code": "548",
+        "prefix": "678"
+    },
+    "VA": {
+        "name": "Vatican City",
+        "iso2": "VA",
+        "iso3": "VAT",
+        "nationality": "none",
+        "code": "336",
+        "prefix": "39"
+    },
+    "VE": {
+        "name": "Venezuela",
+        "iso2": "VE",
+        "iso3": "VEN",
+        "nationality": "Venezuelan",
+        "code": "862",
+        "prefix": "58"
+    },
+    "VN": {
+        "name": "Vietnam",
+        "iso2": "VN",
+        "iso3": "VNM",
+        "nationality": "Vietnamese",
+        "code": "704",
+        "prefix": "84"
+    },
+    "WK": {
+        "name": "Wake Island",
+        "iso2": "WK",
+        "iso3": null,
+        "nationality": null,
+        "code": null,
+        "prefix": null
+    },
+    "WF": {
+        "name": "Wallis and Futuna",
+        "iso2": "WF",
+        "iso3": "WLF",
+        "nationality": "",
+        "code": "876",
+        "prefix": "681"
+    },
+    "EH": {
+        "name": "Western Sahara",
+        "iso2": "EH",
+        "iso3": "ESH",
+        "nationality": "",
+        "code": "732",
+        "prefix": "212"
+    },
+    "YE": {
+        "name": "Yemen",
+        "iso2": "YE",
+        "iso3": "YEM",
+        "nationality": "Yemeni or Yemenite",
+        "code": "887",
+        "prefix": "967"
+    },
+    "ZM": {
+        "name": "Zambia",
+        "iso2": "ZM",
+        "iso3": "ZMB",
+        "nationality": "Zambian",
+        "code": "894",
+        "prefix": "260"
+    },
+    "ZW": {
+        "name": "Zimbabwe",
+        "iso2": "ZW",
+        "iso3": "ZWE",
+        "nationality": "Zimbabwean",
+        "code": "716",
+        "prefix": "263"
+    },
+    "AX": {
+        "name": "\u00c5land Islands",
+        "iso2": "AX",
+        "iso3": "ALA",
+        "nationality": "",
+        "code": "248",
+        "prefix": "358"
+    }
+}
