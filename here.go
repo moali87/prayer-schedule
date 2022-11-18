@@ -7,6 +7,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path"
+	"runtime"
 	"strings"
 )
 
@@ -52,7 +54,12 @@ func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAP
     var countryCode string
     countryCode = hereRequestParamaters.CountryCode
     if len(hereRequestParamaters.CountryCode) < 3 {
-        ccJsonFile, err := os.Open("country-codes.json")
+        _, filename, _, ok := runtime.Caller(0)
+
+        if !ok {
+            panic("No caller information")
+        }
+        ccJsonFile, err := os.Open(fmt.Sprintf("%s/country-codes.json", path.Dir(filename)))
         if err != nil {
             log.Fatalf("unable to convert two character country code into three character code %s", err)
         }
