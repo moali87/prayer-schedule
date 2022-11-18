@@ -48,6 +48,7 @@ type HERECustomerLocationOutput struct {
 
 // HERECustomerLocation Returns customer location data to the nearest city
 func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAPIKey) (*HERECustomerLocationOutput, *HERECustomerCityAddressOutput, error) {
+	resp := new(HERECustomerLocationOutput)
     var countryCode string
     countryCode = hereRequestParamaters.CountryCode
     if len(hereRequestParamaters.CountryCode) < 3 {
@@ -62,7 +63,18 @@ func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAP
         if err != nil {
             log.Fatalf("unable to decode json into struct %s", err)
         }
+        var countryCodeFound bool
+        countryCodeFound = false
+        var countryCodeErr error
         countryCode = ccStruct[hereRequestParamaters.CountryCode]["iso3"]
+        for k := range ccStruct {
+            if k == hereRequestParamaters.CountryCode {
+                countryCodeFound = true
+            } 
+        }
+        if !countryCodeFound {
+            return resp, nil, countryCodeErr
+        }
     }
 
 	const hereRestAPI = "https://geocode.search.hereapi.com/v1/geocode"
@@ -74,7 +86,6 @@ func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAP
 		hereRequestParamaters.HEREAPIKey,
 	)
 
-	resp := new(HERECustomerLocationOutput)
 	req, err := http.Get(reqURL)
 	if err != nil {
 		errMsg := fmt.Errorf("Unable to retrieve customer location")
