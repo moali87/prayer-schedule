@@ -1,8 +1,9 @@
-package schedule
+package schedule_test
 
 import (
 	"os"
 	"testing"
+    psched "github.com/moali87/prayer-schedule"
 )
 
 func TestHEREAPI(t *testing.T) {

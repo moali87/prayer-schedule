@@ -1,11 +1,12 @@
 // schedule test for pcal which returns monthly prayer data based on customer input
-package schedule
+package schedule_test
 
 import (
 	"fmt"
 	"os"
 	"testing"
 	"time"
+    psched "github.com/moali87/prayer-schedule"
 )
 
 func TestPrayerCalendarWithAPIKey(t *testing.T) {
@@ -15,18 +16,19 @@ func TestPrayerCalendarWithAPIKey(t *testing.T) {
 		panic(errMsg)
 	}
 	beverlyHillsTime := time.Date(2022, time.October, 22, 10, 10, 0, 0, beverlyHillsTimeZone)
-	customerInputWithAPIKey := &CustomerLocationInput{
+	// customerInputWithAPIKey := &schedule.CustomerLocationInput{
+	customerInputWithAPIKey := &psched.CustomerLocationInput{
 		CountryCode: "USA",
 		HEREAPIKey:  os.Getenv("HERE_API_KEY"),
 		PostalCode:  "90210",
 		CustTime:    beverlyHillsTime,
 	}
 
-	hereInput := new(CustomerLocationInputWithHEREAPIKey)
+	hereInput := new(psched.CustomerLocationInputWithHEREAPIKey)
 	hereInput.CountryCode = customerInputWithAPIKey.CountryCode
 	hereInput.PostalCode = customerInputWithAPIKey.PostalCode
 	hereInput.HEREAPIKey = customerInputWithAPIKey.HEREAPIKey
-	hereResp, hereAddressData, err := HERECustomerLocation(hereInput)
+	hereResp, hereAddressData, err := psched.HERECustomerLocation(hereInput)
 	if err != nil {
 		t.Errorf("HERE returned an error: %v", err)
 	}
@@ -35,20 +37,20 @@ func TestPrayerCalendarWithAPIKey(t *testing.T) {
 	t.Logf("HERE Longitude: %v", hereAddressData.Coordiantes.Lng)
 	t.Logf("HERE Latitude: %v", hereAddressData.Coordiantes.Lat)
 
-	monthlyData, err := PrayerCalendar(customerInputWithAPIKey)
+	monthlyData, err := psched.PrayerCalendar(customerInputWithAPIKey)
 	if err != nil {
 		t.Errorf("error looking up customer data with api key: %v", err)
 	}
 
-	if monthlyData.currentMonthCalendar.Code != 200 {
+	if monthlyData.CurrentMonthCalendar.Code != 200 {
 		t.Errorf("customerInputWithAPIKey returned code is not 200: %v", err)
 	}
 
-	if len(monthlyData.currentMonthCalendar.Data) == 0 {
+	if len(monthlyData.CurrentMonthCalendar.Data) == 0 {
 		t.Error("monthly data did not return any timings")
 	}
 
-	fmt.Printf("Some prayer data with API Key %v", monthlyData.currentMonthCalendar.Data[0].Timings.Asr)
+	fmt.Printf("Some prayer data with API Key %v", monthlyData.CurrentMonthCalendar.Data[0].Timings.Asr)
 }
 
 func TestPrayerCalendarWithoutAPIKey(t *testing.T) {
@@ -59,26 +61,26 @@ func TestPrayerCalendarWithoutAPIKey(t *testing.T) {
 	}
 	beverlyHillsTime := time.Date(2022, time.October, 22, 10, 10, 0, 0, beverlyHillsTimeZone)
 
-	customerInputWithAPIKey := &CustomerLocationInput{
-		Coordinates: PrayerCalendarInputCoordinates{
+	customerInputWithAPIKey := &psched.CustomerLocationInput{
+		Coordinates: psched.PrayerCalendarInputCoordinates{
 			Latitude:  34.1030,
 			Longitude: -118.4105,
 		},
 		CustTime: beverlyHillsTime,
 	}
 
-	monthlyData, err := PrayerCalendar(customerInputWithAPIKey)
+	monthlyData, err := psched.PrayerCalendar(customerInputWithAPIKey)
 	if err != nil {
 		t.Errorf("error looking up customer data with api key: %v", err)
 	}
 
-	if monthlyData.currentMonthCalendar.Code != 200 {
+	if monthlyData.CurrentMonthCalendar.Code != 200 {
 		t.Errorf("customerInputWithAPIKey returned code is not 200: %v", err)
 	}
 
-	if len(monthlyData.currentMonthCalendar.Data) == 0 {
+	if len(monthlyData.CurrentMonthCalendar.Data) == 0 {
 		t.Error("monthly data did not return any timings")
 	}
 
-	fmt.Printf("Some prayer data without API Key: %v", monthlyData.currentMonthCalendar.Data[0].Timings.Asr)
+	fmt.Printf("Some prayer data without API Key: %v", monthlyData.CurrentMonthCalendar.Data[0].Timings.Asr)
 }

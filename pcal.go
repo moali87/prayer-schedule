@@ -77,7 +77,7 @@ func PrayerCalendar(customerInput *CustomerLocationInput) (*PCalOutputs, error) 
 	if lookupMethod == "Coordinates" {
 		monthlyPrayerData.Longitude = customerInput.Coordinates.Longitude
 		monthlyPrayerData.Latitude = customerInput.Coordinates.Latitude
-		return aladhanData(monthlyPrayerData)
+		return AladhanData(monthlyPrayerData)
 	}
 	// Build for condition without coordiantes.  To be used with HERE API
 	if lookupMethod == "APIKey" {
@@ -93,14 +93,14 @@ func PrayerCalendar(customerInput *CustomerLocationInput) (*PCalOutputs, error) 
 				if hereResp.Items[i].Address.PostalCode == customerInput.PostalCode {
 					monthlyPrayerData.Longitude = hereResp.Items[i].Position.Lng
 					monthlyPrayerData.Latitude = hereResp.Items[i].Position.Lat
-					return aladhanData(monthlyPrayerData)
+					return AladhanData(monthlyPrayerData)
 				}
 			}
 			log.Fatalf("unable to pinpoint customer location based on zip code: %v:", hereResp)
 		}
 		monthlyPrayerData.Longitude = hereCity.Coordiantes.Lng
 		monthlyPrayerData.Latitude = hereCity.Coordiantes.Lat
-		return aladhanData(monthlyPrayerData)
+		return AladhanData(monthlyPrayerData)
 	}
 
 	log.Fatalf("unable to locate customer input.  Perhaps not enough input data was given %v:", customerInput)
