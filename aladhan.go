@@ -131,7 +131,6 @@ func AladhanData(input *PCalInput) (*PCalOutputs, error) {
         monthOutputChan := make(chan *PCalOutput)
 		go aladhanReq(urlChan, monthOutputChan)
         urlChan <- prevReqURL
-        fmt.Println("I've reached previousURL")
         monthOutput, ok := <-monthOutputChan
     if ok == false {
       panic("previous month output goroutine failed")
@@ -144,7 +143,6 @@ func AladhanData(input *PCalInput) (*PCalOutputs, error) {
         monthOutputChan := make(chan *PCalOutput)
         go aladhanReq(urlChan, monthOutputChan)
         urlChan <- nextReqURL
-        fmt.Println("I've reached nextURL")
         previousMonthOutput, ok := <-monthOutputChan
     if ok == false {
       panic("next month output goroutine failed")
@@ -156,7 +154,6 @@ func AladhanData(input *PCalInput) (*PCalOutputs, error) {
     monthOutputChan := make(chan *PCalOutput)
     go aladhanReq(urlChan, monthOutputChan)
     urlChan <- reqURL
-    fmt.Println("I've reached this point")
     monthOutput, ok := <-monthOutputChan
     if ok == false {
         panic("current month output goroutine failed")
