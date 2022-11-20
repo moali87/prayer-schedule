@@ -102,16 +102,15 @@ func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAP
 	defer func() {
 		err := req.Body.Close()
 		if err != nil {
-			fmt.Println("Failed to close request from HERE API")
 			panic(err)
 		}
 	}()
 
 	json.NewDecoder(req.Body).Decode(resp)
 	resp.StatusCode = req.StatusCode
-    fmt.Println(req.StatusCode)
+    fmt.Printf("HERE rest API response code: %d", req.StatusCode)
 	if req.StatusCode != 200 {
-		fmt.Printf("HERE API response is not 200: %v", req.StatusCode)
+		fmt.Printf("HERE API response is not 200: %d", req.StatusCode)
 		fmt.Println(resp)
 		return resp, nil, fmt.Errorf("Return code not 200: %d", req.StatusCode)
 	}

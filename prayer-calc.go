@@ -12,6 +12,8 @@ import (
 
 // determineSelectedPrayer tests whether prayerToTest is within current time or after
 func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) bool {
+    fmt.Println(clientTimeNow)
+    fmt.Println(prayerToTest)
 	prayerToTestHourStr := strings.Split(prayerToTest, ":")[0]
 	prayerToTestMinutePre := strings.Split(prayerToTest, ":")[1]
 	prayerToTestMinuteStr := strings.Split(prayerToTestMinutePre, "(")[0]
