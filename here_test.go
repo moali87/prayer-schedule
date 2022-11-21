@@ -1,10 +1,7 @@
 package schedule_test
 
 import (
-	"fmt"
 	"os"
-	"path"
-	"runtime"
 	"testing"
 
 	psched "github.com/moali87/prayer-schedule"
@@ -12,17 +9,10 @@ import (
 
 func TestHEREAPI(t *testing.T) {
 	customerLocationInput := &psched.CustomerLocationInputWithHEREAPIKey{
-		CountryCode: "US",
+		CountryCode: "USA",
 		HEREAPIKey:  os.Getenv("HERE_API_KEY"),
 		PostalCode:  "90210",
 	}
-
-    _, filename, _, ok := runtime.Caller(0)
-
-    if !ok {
-		panic("No caller information")
-	}
-	fmt.Printf("Filename : %q, Dir : %q\n", filename, path.Dir(filename))
 
 	custLocRet, _, err := psched.HERECustomerLocation(customerLocationInput)
 	if err != nil {
