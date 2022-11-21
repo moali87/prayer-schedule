@@ -183,7 +183,7 @@ func DetermineWhichPrayer(
 	nextPrayerMinute := nextPrayerSplit[1]
 	timediff, err := timeDiff(clientTimeNow, nextPrayerHour, nextPrayerMinute)
 	if err != nil {
-		return nil, fmt.Errorf("unable to gather time difference")
+        return nil, fmt.Errorf("unable to gather time difference: %s", err)
 	}
 	output.TimeDiff = *timediff
 
