@@ -2,7 +2,6 @@ package schedule
 
 import (
 	"fmt"
-	"log"
 	"strconv"
 	"strings"
 	"time"
@@ -11,7 +10,7 @@ import (
 )
 
 // determineSelectedPrayer tests whether prayerToTest is within current time or after
-func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) bool {
+func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) (bool, error) {
     fmt.Println(clientTimeNow)
     fmt.Println(prayerToTest)
 	prayerToTestHourStr := strings.Split(prayerToTest, ":")[0]
@@ -20,28 +19,36 @@ func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) bool 
 
 	// Convert time data to int where possible
 	prayerToTestHour, err := strconv.Atoi(prayerToTestHourStr)
+    fmt.Printf("Prayer to test hour Int: %d \n", prayerToTestHour)
 	if err != nil {
-		log.Fatal("unable to convert minute from string to int")
+        return false, fmt.Errorf("unable to convert hour from string to int: %s", err)
 	}
 
 	prayerToTestMinute, err := strconv.Atoi(prayerToTestMinuteStr)
+    fmt.Printf("Prayer to test minute Int: %d \n", prayerToTestMinute)
 	if err != nil {
-		log.Fatal("unable to convert minute frm string to int")
+        return false, fmt.Errorf("unable to convert minute frm string to int: %s", err)
 	}
 
 	if clientTimeNow.Hour() > prayerToTestHour {
-		return true
+		return true, nil
 	}
 
-	if clientTimeNow.Hour() == prayerToTestHour && clientTimeNow.Minute() >= prayerToTestMinute {
-		return true
+	if clientTimeNow.Hour() == prayerToTestHour &&
+    clientTimeNow.Minute() >= prayerToTestMinute {
+        fmt.Printf("Prayer hour and client hour matches. \n")
+        fmt.Printf("Client minute is greater than or equal to prayer minute.")
+		return true, nil
 	}
 
-	if clientTimeNow.Hour() == prayerToTestHour && clientTimeNow.Minute() == prayerToTestMinute {
-		return true
+	if clientTimeNow.Hour() == prayerToTestHour &&
+    clientTimeNow.Minute() == prayerToTestMinute {
+        fmt.Printf("Prayer hour and client hour matches. \n")
+        fmt.Printf("Prayer minute and client minute matches")
+		return true, nil
 	}
 
-	return false
+	return false, nil
 }
 
 // DeterminedPrayerOutput is the structure which contains current and next prayer name and their time difference
@@ -63,7 +70,11 @@ func DetermineWhichPrayer(
 
 	output := &DeterminedPrayerOutput{}
 	// Determine if current prayer is Isha for the current day
-	if DetermineSelectedPrayer(*clientTimeNow, currentDayPrayers.Isha) {
+    determineIsha, err := DetermineSelectedPrayer(*clientTimeNow, currentDayPrayers.Isha)
+    if err != nil {
+        return nil, err
+    }
+	if determineIsha {
 		output.CurrentPrayerName = "Isha"
 		output.NextPrayerName = "Fajr"
 		output.PreviousDayIsha = false
@@ -98,7 +109,7 @@ func DetermineWhichPrayer(
 
 	for key := 0; key < len(prayerMapKeys); key++ {
 		nextPrayerName := prayerMapKeys[key]
-		selectedPrayerDetermined := DetermineSelectedPrayer(*clientTimeNow, currentDayPrayersMap[nextPrayerName])
+		selectedPrayerDetermined, err := DetermineSelectedPrayer(*clientTimeNow, currentDayPrayersMap[nextPrayerName])
 		if nextPrayerName == "Fajr" && !selectedPrayerDetermined {
 			output.CurrentPrayerName = "Isha"
 			output.CurrentPrayerTime = currentDayPrayersMap[output.CurrentPrayerName]
@@ -107,6 +118,9 @@ func DetermineWhichPrayer(
 			output.NextPrayerTime = nextDayPrayersMap[output.NextPrayerName]
 			break
 		}
+        if err != nil {
+            return nil, err
+        }
 
 		if nextPrayerName == "Sunrise" && !selectedPrayerDetermined {
 			output.CurrentPrayerName = "Fajr"

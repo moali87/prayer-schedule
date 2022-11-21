@@ -4,11 +4,7 @@ package schedule
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
-	"os"
-	"path"
-	"runtime"
 	"strings"
 )
 
@@ -53,36 +49,6 @@ func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAP
 	resp := new(HERECustomerLocationOutput)
     var countryCode string
     countryCode = hereRequestParamaters.CountryCode
-    if len(hereRequestParamaters.CountryCode) < 3 {
-        _, filename, _, ok := runtime.Caller(0)
-
-        if !ok {
-            panic("No caller information")
-        }
-        ccJsonFile, err := os.Open(fmt.Sprintf("%s/country-codes.json", path.Dir(filename)))
-        if err != nil {
-            log.Fatalf("unable to convert two character country code into three character code %s", err)
-        }
-
-        var ccStruct map[string]map[string]string
-        jsonDec := json.NewDecoder(ccJsonFile)
-        err = jsonDec.Decode(&ccStruct)
-        if err != nil {
-            log.Fatalf("unable to decode json into struct %s", err)
-        }
-        var countryCodeFound bool
-        countryCodeFound = false
-        var countryCodeErr error
-        for k := range ccStruct {
-            if k == hereRequestParamaters.CountryCode {
-                countryCodeFound = true
-                countryCode = ccStruct[hereRequestParamaters.CountryCode]["iso3"]
-            } 
-        }
-        if !countryCodeFound {
-            return resp, nil, countryCodeErr
-        }
-    }
 
 	const hereRestAPI = "https://geocode.search.hereapi.com/v1/geocode"
 	reqURL := fmt.Sprintf(
