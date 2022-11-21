@@ -17,7 +17,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   current minute should be before prayer time minute, meaning the prayer has not started yet
 	*/
 	t1CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 13, 0, 0, 0, timeLocation)
-	t1DeterminedTime, err := psched.DetermineSelectedPrayer(t1CurrentTime, "13:04")
+	t1DeterminedTime, err := psched.DetermineSelectedPrayer(t1CurrentTime, "13:04 (EST)")
     if err != nil {
         t.Errorf("determined time with same hour but off before minute returned an incorrect result: %s", err)
     }
@@ -30,7 +30,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   current minute should be after prayer time minute, meaning the prayer has started
 	*/
 	t2CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 13, 5, 0, 0, timeLocation)
-	t2DeterminedTime, err := psched.DetermineSelectedPrayer(t2CurrentTime, "13:04")
+	t2DeterminedTime, err := psched.DetermineSelectedPrayer(t2CurrentTime, "13:04 (EST)")
     if err !=  nil {
         t.Errorf("determined time with same hour but off after minute returned an incorrect result: %s", err)
     }
@@ -43,7 +43,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   prayer has started
 	*/
 	t3CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 13, 5, 0, 0, timeLocation)
-	t3DeterminedTime, err := psched.DetermineSelectedPrayer(t3CurrentTime, "13:04")
+	t3DeterminedTime, err := psched.DetermineSelectedPrayer(t3CurrentTime, "13:04 (EST)")
     if err != nil {
         t.Errorf("determined time with same hour and same minute returned an incorrect result")
     }
@@ -56,7 +56,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   Hour should be before prayer time hour, meaning the prayer has not started yet
 	*/
 	t4CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 12, 5, 0, 0, timeLocation)
-	t4DeterminedTime, err := psched.DetermineSelectedPrayer(t4CurrentTime, "13:04")
+	t4DeterminedTime, err := psched.DetermineSelectedPrayer(t4CurrentTime, "13:04 (EST)")
     if err != nil {
         t.Errorf("determined time with different before hour and same minute returned an incorrect result")
     }
@@ -69,7 +69,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   Hour should be after prayer time hour, meaning the prayer has started
 	*/
 	t5CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 14, 5, 0, 0, timeLocation)
-	t5DeterminedTime, err := psched.DetermineSelectedPrayer(t5CurrentTime, "13:04")
+	t5DeterminedTime, err := psched.DetermineSelectedPrayer(t5CurrentTime, "13:04 (EST)")
     if err != nil {
         t.Errorf("determined time with different after hour and same minute returned an incorrect result")
     }
@@ -81,7 +81,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   Test both hour and minute is before prayer hour and minute
 	*/
 	t6CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 12, 0, 0, 0, timeLocation)
-	t6DeterminedTime, err := psched.DetermineSelectedPrayer(t6CurrentTime, "13:04")
+	t6DeterminedTime, err := psched.DetermineSelectedPrayer(t6CurrentTime, "13:04 (EST)")
     if err != nil {
         t.Errorf("determined time with different after hour and same minute returned an incorrect result")
     }
@@ -93,7 +93,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   Test both hour and minute is after prayer hour and minute
 	*/
 	t7CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 17, 10, 0, 0, timeLocation)
-	t7DeterminedTime, err := psched.DetermineSelectedPrayer(t7CurrentTime, "13:04")
+	t7DeterminedTime, err := psched.DetermineSelectedPrayer(t7CurrentTime, "13:04 (EST)")
     if err != nil {
         t.Errorf("determined time with different after hour and same minute returned an incorrect result")
     }
