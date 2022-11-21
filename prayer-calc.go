@@ -16,6 +16,7 @@ func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) (bool
 	prayerToTestHourStr := strings.Split(prayerToTest, ":")[0]
 	prayerToTestMinutePre := strings.Split(prayerToTest, ":")[1]
 	prayerToTestMinuteStr := strings.Split(prayerToTestMinutePre, "(")[0]
+    prayerToTestMinuteStr = strings.TrimSpace(prayerToTestMinuteStr)
 
 	// Convert time data to int where possible
 	prayerToTestHour, err := strconv.Atoi(prayerToTestHourStr)
@@ -27,7 +28,7 @@ func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) (bool
 	prayerToTestMinute, err := strconv.Atoi(prayerToTestMinuteStr)
     fmt.Printf("Prayer to test minute Int: %d \n", prayerToTestMinute)
 	if err != nil {
-        return false, fmt.Errorf("unable to convert minute frm string to int: %s", err)
+        return false, fmt.Errorf("unable to convert minute from string to int: %s", err)
 	}
 
 	if clientTimeNow.Hour() > prayerToTestHour {
