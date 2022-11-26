@@ -11,8 +11,6 @@ import (
 
 // determineSelectedPrayer tests whether prayerToTest is within current time or after
 func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) (bool, error) {
-    fmt.Println(clientTimeNow)
-    fmt.Println(prayerToTest)
 	prayerToTestHourStr := strings.Split(prayerToTest, ":")[0]
 	prayerToTestMinutePre := strings.Split(prayerToTest, ":")[1]
 	prayerToTestMinuteStr := strings.Split(prayerToTestMinutePre, "(")[0]
@@ -20,13 +18,11 @@ func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) (bool
 
 	// Convert time data to int where possible
 	prayerToTestHour, err := strconv.Atoi(prayerToTestHourStr)
-    fmt.Printf("Prayer to test hour Int: %d \n", prayerToTestHour)
 	if err != nil {
         return false, fmt.Errorf("unable to convert hour from string to int: %s", err)
 	}
 
 	prayerToTestMinute, err := strconv.Atoi(prayerToTestMinuteStr)
-    fmt.Printf("Prayer to test minute Int: %d \n", prayerToTestMinute)
 	if err != nil {
         return false, fmt.Errorf("unable to convert minute from string to int: %s", err)
 	}
@@ -37,15 +33,11 @@ func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) (bool
 
 	if clientTimeNow.Hour() == prayerToTestHour &&
     clientTimeNow.Minute() >= prayerToTestMinute {
-        fmt.Printf("Prayer hour and client hour matches. \n")
-        fmt.Printf("Client minute is greater than or equal to prayer minute.")
 		return true, nil
 	}
 
 	if clientTimeNow.Hour() == prayerToTestHour &&
     clientTimeNow.Minute() == prayerToTestMinute {
-        fmt.Printf("Prayer hour and client hour matches. \n")
-        fmt.Printf("Prayer minute and client minute matches")
 		return true, nil
 	}
 
@@ -189,7 +181,6 @@ func DetermineWhichPrayer(
 	}
 	output.TimeDiff = *timediff
 
-	fmt.Println(output)
 	if output != nil {
 		return output, nil
 	}
