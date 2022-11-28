@@ -20,5 +20,5 @@ jobs:
 
       - name: show coverage
         run: |
-          go test ./... -coverage=./... -coverprofile ./coverage.out
+          go test ./...  -coverpkg=./... -coverprofile ./coverage.out
           go tool cover -func ./coverage.out
