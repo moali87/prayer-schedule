@@ -14,6 +14,8 @@ jobs:
           go-version: '1.19'
           check-latest: true
       - name: run test
+        env:
+          HERE_API_KEY: ${{ secrets.HERE_API_KEY }}
         run: go test -v
 
       - name: show coverage
