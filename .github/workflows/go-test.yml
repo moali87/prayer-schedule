@@ -1,0 +1,22 @@
+---
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  TEST:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.19'
+          check-latest: true
+      - name: run test
+        run: go test -v
+
+      - name: show coverage
+        run: |
+          go test ./... -coverage=./... -coverprofile ./coverage.out
+          go tool cover -func ./coverage.out
