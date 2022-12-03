@@ -11,10 +11,10 @@ import (
 
 // determineSelectedPrayer tests whether prayerToTest is within current time or after
 func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) (bool, error) {
-	prayerToTestHourStr := strings.Split(prayerToTest, ":")[0]
-	prayerToTestMinutePre := strings.Split(prayerToTest, ":")[1]
-	prayerToTestMinuteStr := strings.Split(prayerToTestMinutePre, "(")[0]
-    prayerToTestMinuteStr = strings.TrimSpace(prayerToTestMinuteStr)
+    prayerToTestHourStr, prayerToTestMinuteStr, err := FormatPrayerTime(prayerToTest)
+    if err != nil {
+        return false, fmt.Errorf("%s", err)
+    }
 
 	// Convert time data to int where possible
 	prayerToTestHour, err := strconv.Atoi(prayerToTestHourStr)
@@ -114,6 +114,9 @@ func DetermineWhichPrayer(
             *clientTimeNow,
             currentDayPrayersMap[nextPrayerName],
         )
+        if err != nil {
+            return nil, err
+        }
 		if nextPrayerName == "Fajr" && !selectedPrayerDetermined {
 			output.CurrentPrayerName = "Isha"
 			output.CurrentPrayerTime = previousDayPrayersMap[output.CurrentPrayerName]
@@ -122,9 +125,6 @@ func DetermineWhichPrayer(
 			output.NextPrayerTime = currentDayPrayersMap[output.NextPrayerName]
 			break
 		}
-        if err != nil {
-            return nil, err
-        }
 
 		if nextPrayerName == "Sunrise" && !selectedPrayerDetermined {
 			output.CurrentPrayerName = "Fajr"
@@ -237,14 +237,27 @@ func formatAndDiffNextPrayerTime(
     nextPrayerTimeString string,
 ) (*time.Duration, error) {
 
-	nextPrayerSplit := strings.Split(nextPrayerTimeString, ":")
-	nextPrayerHour := nextPrayerSplit[0]
-	nextPrayerMinute := nextPrayerSplit[1]
-    nextPrayerMinute = strings.Split(nextPrayerMinute, "(")[0]
-    nextPrayerMinute = strings.TrimSpace(nextPrayerMinute)
+    nextPrayerHour, nextPrayerMinute, err := FormatPrayerTime(nextPrayerTimeString)
+    if err != nil {
+        return nil, fmt.Errorf("%s", err)
+    }
 	timediff, err := timeDiff(clientTimeNow, nextPrayerHour, nextPrayerMinute)
 	if err != nil {
         return nil, fmt.Errorf("unable to gather time difference: %s", err)
 	}
     return timediff, nil
+}
+
+// FormatPrayerTime takes prayerTime in the format of HH:MM (TIMEZONE) and returns hour and minute
+func FormatPrayerTime(prayerTime string) (string, string, error) {
+    if !strings.Contains(prayerTime, ":") && !strings.Contains(prayerTime, "(") {
+        return "", "", fmt.Errorf("Want: HH:MM (TIMEZONE) \n Given: %s", prayerTime)
+    }
+	prayerTimeSplit := strings.Split(prayerTime, ":")
+	prayerTimeHour := prayerTimeSplit[0]
+	prayerTimeMinute := prayerTimeSplit[1]
+    prayerTimeMinute = strings.Split(prayerTimeMinute, "(")[0]
+    prayerTimeMinute = strings.TrimSpace(prayerTimeMinute)
+
+    return prayerTimeHour, prayerTimeMinute, nil
 }
