@@ -13,7 +13,7 @@ import (
 func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) (bool, error) {
     prayerToTestHourStr, prayerToTestMinuteStr, err := FormatTime(prayerToTest)
     if err != nil {
-        return false, fmt.Errorf("unable to format time correctly, need format HH:MM (TIMEZONE) %s", err)
+        return false, fmt.Errorf("%s", err)
     }
 
 	// Convert time data to int where possible
@@ -239,7 +239,7 @@ func formatAndDiffNextPrayerTime(
 
     nextPrayerHour, nextPrayerMinute, err := FormatTime(nextPrayerTimeString)
     if err != nil {
-        return nil, fmt.Errorf("unable to format time correctly, need format HH:MM (TIMEZONE) %s", err)
+        return nil, fmt.Errorf("%s", err)
     }
 	timediff, err := timeDiff(clientTimeNow, nextPrayerHour, nextPrayerMinute)
 	if err != nil {
@@ -250,8 +250,8 @@ func formatAndDiffNextPrayerTime(
 
 // FormatTime takes prayerTime in the format of HH:MM (TIMEZONE) and returns hour and minute
 func FormatTime(prayerTime string) (string, string, error) {
-    if strings.Contains(prayerTime, ":") && strings.Contains(prayerTime, "(") {
-        return "", "", fmt.Errorf("time format is not in HH:MM (TIMEZONE)")
+    if !strings.Contains(prayerTime, ":") && strings.Contains(prayerTime, "(") {
+        return "", "", fmt.Errorf("Want: HH:MM (TIMEZONE) \n Given: %s", prayerTime)
     }
 	prayerTimeSplit := strings.Split(prayerTime, ":")
 	prayerTimeHour := prayerTimeSplit[0]
