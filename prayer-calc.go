@@ -11,7 +11,7 @@ import (
 
 // determineSelectedPrayer tests whether prayerToTest is within current time or after
 func DetermineSelectedPrayer(clientTimeNow time.Time, prayerToTest string) (bool, error) {
-    prayerToTestHourStr, prayerToTestMinuteStr, err := FormatTime(prayerToTest)
+    prayerToTestHourStr, prayerToTestMinuteStr, err := FormatPrayerTime(prayerToTest)
     if err != nil {
         return false, fmt.Errorf("%s", err)
     }
@@ -237,7 +237,7 @@ func formatAndDiffNextPrayerTime(
     nextPrayerTimeString string,
 ) (*time.Duration, error) {
 
-    nextPrayerHour, nextPrayerMinute, err := FormatTime(nextPrayerTimeString)
+    nextPrayerHour, nextPrayerMinute, err := FormatPrayerTime(nextPrayerTimeString)
     if err != nil {
         return nil, fmt.Errorf("%s", err)
     }
@@ -248,8 +248,8 @@ func formatAndDiffNextPrayerTime(
     return timediff, nil
 }
 
-// FormatTime takes prayerTime in the format of HH:MM (TIMEZONE) and returns hour and minute
-func FormatTime(prayerTime string) (string, string, error) {
+// FormatPrayerTime takes prayerTime in the format of HH:MM (TIMEZONE) and returns hour and minute
+func FormatPrayerTime(prayerTime string) (string, string, error) {
     if !strings.Contains(prayerTime, ":") && !strings.Contains(prayerTime, "(") {
         return "", "", fmt.Errorf("Want: HH:MM (TIMEZONE) \n Given: %s", prayerTime)
     }
