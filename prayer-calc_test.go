@@ -30,7 +30,7 @@ func TestDetermineSelectedPrayer(t *testing.T) {
 	   current minute should be after prayer time minute, meaning the prayer has started
 	*/
 	t2CurrentTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 13, 5, 0, 0, timeLocation)
-	t2DeterminedTime, err := psched.DetermineSelectedPrayer(t2CurrentTime, "13:03 (EST)")
+	t2DeterminedTime, err := psched.DetermineSelectedPrayer(t2CurrentTime, "13:04 (EST)")
     if err !=  nil {
         t.Errorf("determined time with same hour but off after minute returned an incorrect result: %s", err)
     }
