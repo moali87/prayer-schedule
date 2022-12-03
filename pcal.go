@@ -57,7 +57,7 @@ func NewPrayerCalendarWithoutCoordiantes(
 PrayerCalendar returns customer monthly prayer data with or without customer providing coordinates.
 if customer does not provide coordiantes, they must provide a HERE API Key
 */
-func PrayerCalendar(customerInput *CustomerLocationInput) (*PCalOutputs, error) {
+func PrayerCalendar(customerInput *CustomerLocationInput) (*PCalOutput, error) {
 	lookupMethod, err := checkCustomerInput(customerInput)
 	if err != nil {
 		log.Fatal("CustomerInputError")

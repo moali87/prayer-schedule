@@ -37,20 +37,6 @@ type PCalOutput struct {
 	Longitude float32 // Client longitude to use with aladhan
 }
 
-type PCalOutputs struct {
-	CurrentMonthCalendar  PCalOutput
-	PreviousMonthCalendar PCalOutput
-	NextMonthCalendar     PCalOutput
-}
-
-func BeginningOfMonth(date time.Time) time.Time {
-	return date.AddDate(0, 0, -date.Day()+1)
-}
-
-func EndOfMonth(date time.Time) time.Time {
-	return date.AddDate(0, 1, -date.Day())
-}
-
 func aladhanReq(reqURL <-chan string, pcalOutput chan <-*PCalOutput) {
 
 	resp := new(PCalOutput)
@@ -83,38 +69,10 @@ func aladhanReq(reqURL <-chan string, pcalOutput chan <-*PCalOutput) {
 }
 
 /*
-aladhanData returns the total monthly prayers of given month, coordinates, and zip from aladhan.
+AladhanData returns the total monthly prayers of given month, coordinates, and zip from aladhan.
 https://api.aladhan.com/v1/calendar?latitude=51.508515&longitude=-0.1254872&method=1&month=4&year=2017
 */
-func AladhanData(input *PCalInput) (*PCalOutputs, error) {
-	outputs := new(PCalOutputs)
-	// Check to build if previous and next month calendar will be required
-	var prevReqURL string
-	var nextReqURL string
-	if input.CustTime.Day() == BeginningOfMonth(input.CustTime).Day() {
-		prevMonthDate := input.CustTime.AddDate(input.CustTime.Year(), input.CustTime.Day(), -1)
-		prevReqURL = fmt.Sprintf(
-			"https://api.aladhan.com/v1/calendar?latitude=%v&longitude=%v&method=%d&month=%d&year=%d",
-			input.Latitude,
-			input.Longitude,
-			input.Institution,
-			prevMonthDate.Month(),
-			prevMonthDate.Year(),
-		)
-	}
-
-	if input.CustTime.Day() == EndOfMonth(input.CustTime).Day() {
-		nextMonthDate := input.CustTime.AddDate(input.CustTime.Year(), input.CustTime.Day(), 1)
-		nextReqURL = fmt.Sprintf(
-			"https://api.aladhan.com/v1/calendar?latitude=%v&longitude=%v&method=%d&month=%d&year=%d",
-			input.Latitude,
-			input.Longitude,
-			input.Institution,
-			nextMonthDate.Month(),
-			nextMonthDate.Year(),
-		)
-	}
-
+func AladhanData(input *PCalInput) (*PCalOutput, error) {
 	// Use HERE API to get client coordinates
 	reqURL := fmt.Sprintf(
 		"https://api.aladhan.com/v1/calendar?latitude=%v&longitude=%v&method=%d&month=%d&year=%d",
@@ -127,30 +85,6 @@ func AladhanData(input *PCalInput) (*PCalOutputs, error) {
 
     var urlChan = make(chan string)
 
-	if prevReqURL != "" {
-        monthOutputChan := make(chan *PCalOutput)
-		go aladhanReq(urlChan, monthOutputChan)
-        urlChan <- prevReqURL
-        monthOutput, ok := <-monthOutputChan
-    if ok == false {
-      panic("previous month output goroutine failed")
-    }
-    // close(monthOutputChan)
-    outputs.PreviousMonthCalendar = *monthOutput
-	}
-
-	if nextReqURL != "" {
-        monthOutputChan := make(chan *PCalOutput)
-        go aladhanReq(urlChan, monthOutputChan)
-        urlChan <- nextReqURL
-        previousMonthOutput, ok := <-monthOutputChan
-    if ok == false {
-      panic("next month output goroutine failed")
-    }
-    // close(monthOutputChan)
-    outputs.NextMonthCalendar = *previousMonthOutput
-	}
-
     monthOutputChan := make(chan *PCalOutput)
     go aladhanReq(urlChan, monthOutputChan)
     urlChan <- reqURL
@@ -159,9 +93,6 @@ func AladhanData(input *PCalInput) (*PCalOutputs, error) {
         panic("current month output goroutine failed")
     }
 
-    // close(monthOutputChan)
-	outputs.CurrentMonthCalendar = *monthOutput
-
-	return outputs, nil
+	return monthOutput, nil
 }
 

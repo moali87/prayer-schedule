@@ -88,6 +88,7 @@ func DetermineWhichPrayer(
 	if determineIsha {
 		output.CurrentPrayerName = "Isha"
 		output.NextPrayerName = "Fajr"
+        output.CurrentPrayerTime = currentDayPrayersMap["Isha"]
         output.NextPrayerTime = nextDayPrayersMap["Fajr"]
 		output.PreviousDayIsha = false
         timediff, err := formatAndDiffNextPrayerTime(clientTimeNow, output.NextPrayerTime)
@@ -208,14 +209,23 @@ func timeDiff(
 		return nil, err
 	}
 
-	var clientTimeNowDay int = clientTimeNow.Day()
+	var nextPrayerDate time.Time
 
+    nextPrayerDate = *clientTimeNow
 	if intNextPrayerHour < clientTimeNow.Hour() {
-        nextDay := clientTimeNow.AddDate(0, 0, 1)
-        clientTimeNowDay = nextDay.Day()
+        nextPrayerDate = clientTimeNow.AddDate(0, 0, 1)
 	}
 
-	nextPrayerTime := time.Date(clientTimeNow.Year(), clientTimeNow.Month(), clientTimeNowDay, intNextPrayerHour, intNextPrayerMinute, 0, 0, clientTimeNow.Location())
+	nextPrayerTime := time.Date(
+        nextPrayerDate.Year(),
+        nextPrayerDate.Month(),
+        nextPrayerDate.Day(),
+        intNextPrayerHour,
+        intNextPrayerMinute,
+        0,
+        0,
+        clientTimeNow.Location(),
+    )
 
 	diff := nextPrayerTime.Sub(*clientTimeNow)
 
