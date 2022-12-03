@@ -42,15 +42,15 @@ func TestPrayerCalendarWithAPIKey(t *testing.T) {
 		t.Errorf("error looking up customer data with api key: %v", err)
 	}
 
-	if monthlyData.CurrentMonthCalendar.Code != 200 {
+	if monthlyData.Code != 200 {
 		t.Errorf("customerInputWithAPIKey returned code is not 200: %v", err)
 	}
 
-	if len(monthlyData.CurrentMonthCalendar.Data) == 0 {
+	if len(monthlyData.Data) == 0 {
 		t.Error("monthly data did not return any timings")
 	}
 
-	fmt.Printf("Some prayer data with API Key %v", monthlyData.CurrentMonthCalendar.Data[0].Timings.Asr)
+	fmt.Printf("Some prayer data with API Key %v", monthlyData.Data[0].Timings.Asr)
 }
 
 func TestPrayerCalendarWithoutAPIKey(t *testing.T) {
@@ -74,13 +74,13 @@ func TestPrayerCalendarWithoutAPIKey(t *testing.T) {
 		t.Errorf("error looking up customer data with api key: %v", err)
 	}
 
-	if monthlyData.CurrentMonthCalendar.Code != 200 {
+	if monthlyData.Code != 200 {
 		t.Errorf("customerInputWithAPIKey returned code is not 200: %v", err)
 	}
 
-	if len(monthlyData.CurrentMonthCalendar.Data) == 0 {
+	if len(monthlyData.Data) == 0 {
 		t.Error("monthly data did not return any timings")
 	}
 
-	fmt.Printf("Some prayer data without API Key: %v", monthlyData.CurrentMonthCalendar.Data[0].Timings.Asr)
+	fmt.Printf("Some prayer data without API Key: %v", monthlyData.Data[0].Timings.Asr)
 }
