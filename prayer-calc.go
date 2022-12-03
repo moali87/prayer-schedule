@@ -250,7 +250,7 @@ func formatAndDiffNextPrayerTime(
 
 // FormatTime takes prayerTime in the format of HH:MM (TIMEZONE) and returns hour and minute
 func FormatTime(prayerTime string) (string, string, error) {
-    if !strings.Contains(prayerTime, ":") && strings.Contains(prayerTime, "(") {
+    if !strings.Contains(prayerTime, ":") && !strings.Contains(prayerTime, "(") {
         return "", "", fmt.Errorf("Want: HH:MM (TIMEZONE) \n Given: %s", prayerTime)
     }
 	prayerTimeSplit := strings.Split(prayerTime, ":")
