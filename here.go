@@ -93,5 +93,9 @@ func HERECustomerLocation(hereRequestParamaters *CustomerLocationInputWithHEREAP
 		}
 	}
 
+    if len(resp.Items) == 0 {
+        return nil, nil, fmt.Errorf("HERE did not find any addresses")
+    }
+
 	return resp, HERECustomerCityAddressOutputStruct, nil
 }

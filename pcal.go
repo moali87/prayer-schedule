@@ -4,7 +4,6 @@ package schedule
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"time"
 )
@@ -57,77 +56,75 @@ func NewPrayerCalendarWithoutCoordiantes(
 PrayerCalendar returns customer monthly prayer data with or without customer providing coordinates.
 if customer does not provide coordiantes, they must provide a HERE API Key
 */
-func PrayerCalendar(customerInput *CustomerLocationInput) (*PCalOutput, error) {
-	lookupMethod, err := checkCustomerInput(customerInput)
+func (c *CustomerLocationInput) PrayerCalendar() (*PCalOutput, error) {
+	lookupMethod, err := c.checkCustomerInput()
 	if err != nil {
-		log.Fatal("CustomerInputError")
+       fmt.Println(err) 
+       return nil, err
 	}
 
 	hereLookup := new(CustomerLocationInputWithHEREAPIKey)
 	monthlyPrayerData := new(PCalInput)
 
-	monthlyPrayerData.CustTime = customerInput.CustTime
-	monthlyPrayerData.Institution = customerInput.Institution
-	hereLookup.CountryCode = customerInput.CountryCode
+	monthlyPrayerData.CustTime = c.CustTime
+	monthlyPrayerData.Institution = c.Institution
+	hereLookup.CountryCode = c.CountryCode
 
 	if lookupMethod != "Coordinates" && lookupMethod != "APIKey" {
-		log.Fatalf("coordiantes or APIKey was not provided, cannot continue: %v %s", customerInput, lookupMethod)
+		return nil, fmt.Errorf("coordiantes or APIKey was not provided, cannot continue: %v %s", c, lookupMethod)
 	}
 	// Build for condition with coordiantes.  To be used with HERE API
 	if lookupMethod == "Coordinates" {
-		monthlyPrayerData.Longitude = customerInput.Coordinates.Longitude
-		monthlyPrayerData.Latitude = customerInput.Coordinates.Latitude
+		monthlyPrayerData.Longitude = c.Coordinates.Longitude
+		monthlyPrayerData.Latitude = c.Coordinates.Latitude
 		return AladhanData(monthlyPrayerData)
 	}
 	// Build for condition without coordiantes.  To be used with HERE API
 	if lookupMethod == "APIKey" {
-		hereLookup.PostalCode = customerInput.PostalCode
-		hereLookup.HEREAPIKey = customerInput.HEREAPIKey
+		hereLookup.PostalCode = c.PostalCode
+		hereLookup.HEREAPIKey = c.HEREAPIKey
 		hereResp, hereCity, err := HERECustomerLocation(hereLookup)
 		if err != nil {
-			log.Fatalf("unable to lookup customer location using API Key: %v", hereLookup)
+			return nil, fmt.Errorf("unable to lookup customer location using API Key: %v", hereLookup)
 		}
 
 		if hereCity.Coordiantes.Lat == 0 && hereCity.Coordiantes.Lng == 0 {
 			for i := 0; i < len(hereResp.Items); i++ {
-				if hereResp.Items[i].Address.PostalCode == customerInput.PostalCode {
+				if hereResp.Items[i].Address.PostalCode == c.PostalCode {
 					monthlyPrayerData.Longitude = hereResp.Items[i].Position.Lng
 					monthlyPrayerData.Latitude = hereResp.Items[i].Position.Lat
 					return AladhanData(monthlyPrayerData)
 				}
 			}
-			log.Fatalf("unable to pinpoint customer location based on zip code: %v:", hereResp)
+			return nil, fmt.Errorf("unable to pinpoint customer location based on zip code: %v:", hereResp)
 		}
 		monthlyPrayerData.Longitude = hereCity.Coordiantes.Lng
 		monthlyPrayerData.Latitude = hereCity.Coordiantes.Lat
 		return AladhanData(monthlyPrayerData)
 	}
 
-	log.Fatalf("unable to locate customer input.  Perhaps not enough input data was given %v:", customerInput)
-
-	return nil, err
+	return nil, fmt.Errorf("unable to locate customer input.  Perhaps not enough input data was given %v:", c)
 }
 
-func checkCustomerInput(customerInput *CustomerLocationInput) (string, error) {
+func (c *CustomerLocationInput)checkCustomerInput() (string, error) {
 	// Check if API key and Coordinates are not filled
-	if customerInput.HEREAPIKey == "" && (customerInput.Coordinates.Longitude == 0 || customerInput.Coordinates.Latitude == 0) {
+	if c.HEREAPIKey == "" && (c.Coordinates.Longitude == 0 || c.Coordinates.Latitude == 0) {
 		_, err := fmt.Fprintf(os.Stderr, "error: HEREAPIKey and coordinates are not filled.  Must fill one or the other")
 		return "", err
 	}
 
 	// Check if API key and Coordinates are filled
-	if customerInput.HEREAPIKey != "" && (customerInput.Coordinates.Longitude != 0 || customerInput.Coordinates.Latitude != 0) {
+	if c.HEREAPIKey != "" && (c.Coordinates.Longitude != 0 || c.Coordinates.Latitude != 0) {
 		_, err := fmt.Fprintf(os.Stderr, "error: HEREAPIKey and Coordinates are filled.  Cannot fill both fields")
 		return "", err
 	}
 
-	if customerInput.HEREAPIKey != "" && (customerInput.Coordinates.Longitude == 0 || customerInput.Coordinates.Latitude == 0) {
+	if c.HEREAPIKey != "" && (c.Coordinates.Longitude == 0 || c.Coordinates.Latitude == 0) {
 		return "APIKey", nil
 	}
 
-	if customerInput.HEREAPIKey == "" && (customerInput.Coordinates.Longitude != 0 || customerInput.Coordinates.Latitude != 0) {
+	if c.HEREAPIKey == "" && (c.Coordinates.Longitude != 0 || c.Coordinates.Latitude != 0) {
 		return "Coordinates", nil
 	}
-	log.Fatal("Could not determine which method to use between API key or Coordinates")
 	return "", fmt.Errorf("Could not determine which method to use between API key or Coordinates")
 }

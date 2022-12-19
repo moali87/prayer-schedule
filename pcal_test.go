@@ -37,7 +37,7 @@ func TestPrayerCalendarWithAPIKey(t *testing.T) {
 	t.Logf("HERE Longitude: %v", hereAddressData.Coordiantes.Lng)
 	t.Logf("HERE Latitude: %v", hereAddressData.Coordiantes.Lat)
 
-	monthlyData, err := psched.PrayerCalendar(customerInputWithAPIKey)
+	monthlyData, err := customerInputWithAPIKey.PrayerCalendar()
 	if err != nil {
 		t.Errorf("error looking up customer data with api key: %v", err)
 	}
@@ -69,7 +69,7 @@ func TestPrayerCalendarWithoutAPIKey(t *testing.T) {
 		CustTime: beverlyHillsTime,
 	}
 
-	monthlyData, err := psched.PrayerCalendar(customerInputWithAPIKey)
+	monthlyData, err := customerInputWithAPIKey.PrayerCalendar()
 	if err != nil {
 		t.Errorf("error looking up customer data with api key: %v", err)
 	}
